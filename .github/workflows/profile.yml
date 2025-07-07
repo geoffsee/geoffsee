@@ -22,5 +22,6 @@ jobs:
           plugin_stars: yes
           plugin_lines_delay: 30
           plugin_stars_limit: 3
+          plugin_lines_sections: base
           
 
