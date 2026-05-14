@@ -6,6 +6,11 @@ import type { ProfileStats } from "./profile-stats.ts";
 import type { DownloadsStats } from "./downloads-stats.ts";
 import { sumCratesAllTime, sumNpmWeekly } from "./downloads-stats.ts";
 
+/** Panel fills — transparent so README / system theme shows through (avoids dark slabs in light mode). */
+enum MetricsSvgPanelColor {
+  Background = "transparent",
+}
+
 function escXml(s: string): string {
   return s
     .replaceAll("&", "&amp;")
@@ -119,7 +124,7 @@ export function statsToMetricsSvg(
   parts.push(`<linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2ea043" stop-opacity="0.65"/><stop offset="100%" stop-color="#2ea043" stop-opacity="0.04"/></linearGradient>`);
   parts.push(`</defs>`);
 
-  parts.push(`<rect x="${leftX}" y="${topY}" width="${leftW}" height="${height - 56}" rx="14" fill="#0b1220" stroke="#2b3448"/>`);
+  parts.push(`<rect x="${leftX}" y="${topY}" width="${leftW}" height="${height - 56}" rx="14" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
   parts.push(`<circle cx="${leftX + 36}" cy="${topY + 34}" r="20" fill="#121a2a" stroke="#55607a"/>`);
   parts.push(`<text x="${leftX + 36}" y="${topY + 40}" text-anchor="middle" font-family="${font}" font-size="18" font-weight="700" fill="#e6edf3">G</text>`);
   parts.push(`<text x="${leftX + 78}" y="${topY + 30}" font-family="${font}" font-size="20" font-weight="700" fill="#e6edf3">${escXml(title)}</text>`);
@@ -172,7 +177,7 @@ export function statsToMetricsSvg(
     }
   }
 
-  parts.push(`<rect x="${mainX}" y="${mainMetricsY}" width="${mainW}" height="${mainMetricsH}" rx="12" fill="#0b1220" stroke="#2b3448"/>`);
+  parts.push(`<rect x="${mainX}" y="${mainMetricsY}" width="${mainW}" height="${mainMetricsH}" rx="12" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
   const gap = 18;
   const cardW = Math.floor((mainW - gap * 4) / 3);
   const cardX1 = mainX + gap;
@@ -181,7 +186,7 @@ export function statsToMetricsSvg(
   const cardY = topY + 78;
   const cardH = 326;
   const metricCard = (x: number, heading: string): void => {
-    parts.push(`<rect x="${x}" y="${cardY}" width="${cardW}" height="${cardH}" rx="10" fill="#101a2d" stroke="#34425f"/>`);
+    parts.push(`<rect x="${x}" y="${cardY}" width="${cardW}" height="${cardH}" rx="10" fill="${MetricsSvgPanelColor.Background}" stroke="#34425f"/>`);
     parts.push(`<text x="${x + 16}" y="${cardY + 30}" font-family="${font}" font-size="16" font-weight="700" fill="#e6edf3">${escXml(heading)}</text>`);
   };
   metricCard(cardX1, "Contribution Mix");
@@ -259,7 +264,7 @@ export function statsToMetricsSvg(
     rY += 50;
   }
 
-  parts.push(`<rect x="${mainX}" y="${graphY}" width="${mainW}" height="300" rx="12" fill="#0b1220" stroke="#2b3448"/>`);
+  parts.push(`<rect x="${mainX}" y="${graphY}" width="${mainW}" height="300" rx="12" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
   parts.push(`<text x="${mainX + 24}" y="${graphY + 34}" font-family="${font}" font-size="18" fill="#dce4ef">Recent activity</text>`);
   for (let i = 0; i < 5; i++) {
     const gy = chartY + (i * chartH) / 4;

@@ -3,7 +3,7 @@
 <defs>
 <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2ea043" stop-opacity="0.65"/><stop offset="100%" stop-color="#2ea043" stop-opacity="0.04"/></linearGradient>
 </defs>
-<rect x="28" y="28" width="330" height="884" rx="14" fill="#0b1220" stroke="#2b3448"/>
+<rect x="28" y="28" width="330" height="884" rx="14" fill="transparent" stroke="#2b3448"/>
 <circle cx="64" cy="62" r="20" fill="#121a2a" stroke="#55607a"/>
 <text x="64" y="68" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#e6edf3">G</text>
 <text x="106" y="58" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#e6edf3">Geoff Seemueller</text>
@@ -36,12 +36,12 @@
 <text x="340" y="468" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#e6edf3">1.5k</text>
 <text x="46" y="492" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#aab6c8">  vtt-rs</text>
 <text x="340" y="492" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#e6edf3">972</text>
-<rect x="384" y="84" width="868" height="370" rx="12" fill="#0b1220" stroke="#2b3448"/>
-<rect x="402" y="106" width="265" height="326" rx="10" fill="#101a2d" stroke="#34425f"/>
+<rect x="384" y="84" width="868" height="370" rx="12" fill="transparent" stroke="#2b3448"/>
+<rect x="402" y="106" width="265" height="326" rx="10" fill="transparent" stroke="#34425f"/>
 <text x="418" y="136" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">Contribution Mix</text>
-<rect x="685" y="106" width="265" height="326" rx="10" fill="#101a2d" stroke="#34425f"/>
+<rect x="685" y="106" width="265" height="326" rx="10" fill="transparent" stroke="#34425f"/>
 <text x="701" y="136" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">Momentum</text>
-<rect x="968" y="106" width="265" height="326" rx="10" fill="#101a2d" stroke="#34425f"/>
+<rect x="968" y="106" width="265" height="326" rx="10" fill="transparent" stroke="#34425f"/>
 <text x="984" y="136" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#e6edf3">Recently Updated</text>
 <text x="404" y="88" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#aab6c8">Recent stars</text>
 <rect x="482" y="76" width="170" height="20" rx="10" fill="#18233a" stroke="#2b3c5d"/>
@@ -108,7 +108,7 @@
 <line x1="1002" y1="371" x2="1199" y2="371" stroke="#24304a"/>
 <rect x="1002" y="378" width="175" height="7" rx="3.5" fill="#1a253a"/>
 <rect x="1002" y="378" width="6" height="7" rx="3.5" fill="#8b5cf6"/>
-<rect x="384" y="478" width="868" height="300" rx="12" fill="#0b1220" stroke="#2b3448"/>
+<rect x="384" y="478" width="868" height="300" rx="12" fill="transparent" stroke="#2b3448"/>
 <text x="408" y="512" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" fill="#dce4ef">Recent activity</text>
 <line x1="410" y1="534" x2="1226" y2="534" stroke="#2b3448" stroke-dasharray="2 8"/>
 <line x1="410" y1="566" x2="1226" y2="566" stroke="#2b3448" stroke-dasharray="2 8"/>
