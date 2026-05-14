@@ -17,7 +17,7 @@
 <text x="340" y="206" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#e6edf3">44</text>
 <text x="46" y="242" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24" font-weight="700" fill="#dce4ef">Packages</text>
 <text x="46" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff">npm (~25)</text>
-<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff">680/wk</text>
+<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff">599/wk</text>
 <text x="46" y="294" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#aab6c8">  @di-framework/di-framewor…</text>
 <text x="340" y="294" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#e6edf3">56</text>
 <text x="46" y="318" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#aab6c8">  @di-framework/di-framework</text>
@@ -56,7 +56,7 @@
 <rect x="649" y="158" width="2" height="10" rx="4" fill="#f59e0b"/>
 <circle cx="422" cy="184" r="4" fill="#4f8df7"/>
 <text x="434" y="188" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#cdd8e5">Commits</text>
-<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#e6edf3">2853</text>
+<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#e6edf3">2855</text>
 <circle cx="422" cy="228" r="4" fill="#22c55e"/>
 <text x="434" y="232" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#cdd8e5">Issues</text>
 <text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#e6edf3">391</text>
@@ -170,5 +170,5 @@
 <rect x="1060" y="686" width="9" height="9" rx="2" fill="#161b22"/>
 <rect x="1073" y="686" width="9" height="9" rx="2" fill="#161b22"/>
 <rect x="1086" y="686" width="9" height="9" rx="2" fill="#161b22"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#aab6c8">Updated 2026-05-14 17:34Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#aab6c8">Updated 2026-05-14 17:52Z</text>
 </svg>
