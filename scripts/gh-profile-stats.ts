@@ -233,7 +233,8 @@ To render from a saved JSON file: bun scripts/render-profile.ts stats.json`);
 
     const bioFile = Bun.file(opts.bio);
     const bioText = (await bioFile.exists()) ? await bioFile.text() : "";
-    await Bun.write(opts.readme, assembleReadme(opts.imageRef, bioText));
+    const cacheBust = Bun.hash(svgOut).toString(36).slice(0, 8);
+    await Bun.write(opts.readme, assembleReadme(opts.imageRef, bioText, cacheBust));
 
     console.error(`Wrote ${opts.svg} (${svgOut.length} bytes) and ${opts.readme}`);
   }

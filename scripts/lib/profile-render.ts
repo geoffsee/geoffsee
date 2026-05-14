@@ -273,9 +273,15 @@ export function statsToMetricsSvg(
   return `${parts.join("\n")}\n`;
 }
 
-export function assembleReadme(statsImagePath: string, bioMarkdown: string): string {
+export function assembleReadme(
+  statsImagePath: string,
+  bioMarkdown: string,
+  cacheBust?: string | null,
+): string {
   const img = statsImagePath.trim() || "/github-metrics.svg";
-  const lines = [`![Stats](${img})`, "", bioMarkdown.trimEnd(), ""];
+  const v = (cacheBust ?? "").replace(/[^a-zA-Z0-9._-]/g, "");
+  const url = v ? `${img}${img.includes("?") ? "&" : "?"}v=${v}` : img;
+  const lines = [`![Stats](${url})`, "", bioMarkdown.trimEnd(), ""];
   return lines.join("\n");
 }
 

@@ -100,7 +100,8 @@ await Bun.write(svg, svgOut);
 
 const bioFile = Bun.file(bio);
 const bioText = (await bioFile.exists()) ? await bioFile.text() : "";
-const readmeOut = assembleReadme(imageRef, bioText);
+const cacheBust = Bun.hash(svgOut).toString(36).slice(0, 8);
+const readmeOut = assembleReadme(imageRef, bioText, cacheBust);
 await Bun.write(readme, readmeOut);
 
 console.error(`Wrote ${svg} (${svgOut.length} bytes) and ${readme}`);
