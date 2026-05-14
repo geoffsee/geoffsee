@@ -28,7 +28,6 @@ function metricsSvgThemeStyles(): string {
     .svg-chip-fill { fill: #18233a; }
     .svg-chip-stroke { stroke: #2b3c5d; }
     .svg-chip-text { fill: #cdd8e5; }
-    .svg-repo-rule { stroke: #24304a; }
     .svg-repo-track { fill: #1a253a; }
     .svg-chart-grid { stroke: #2b3448; }
     .svg-chart-axis { stroke: #93a1b7; }
@@ -54,7 +53,6 @@ function metricsSvgThemeStyles(): string {
       .svg-chip-fill { fill: #f6f8fa; }
       .svg-chip-stroke { stroke: #d0d7de; }
       .svg-chip-text { fill: #24292f; }
-      .svg-repo-rule { stroke: #d8dee4; }
       .svg-repo-track { fill: #eff2f5; }
       .svg-chart-grid { stroke: #d8dee4; }
       .svg-chart-axis { stroke: #818b98; }
@@ -360,7 +358,6 @@ export function statsToMetricsSvg(
     parts.push(
       `<text x="${cardX3 + cardW - 16}" y="${rY}" text-anchor="end" font-family="${font}" font-size="14" class="svg-text-primary">${escXml(fmtRepoUpdated(r.updatedAt))}</text>`,
     );
-    parts.push(`<line x1="${cardX3 + 34}" y1="${rY + 1}" x2="${cardX3 + cardW - 34}" y2="${rY + 1}" class="svg-repo-rule"/>`);
     parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${cardW - 90}" height="7" rx="3.5" class="svg-repo-track"/>`);
     parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${barW}" height="7" rx="3.5" fill="#8b5cf6"/>`);
     rY += 50;

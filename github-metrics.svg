@@ -18,7 +18,6 @@
     .svg-chip-fill { fill: #18233a; }
     .svg-chip-stroke { stroke: #2b3c5d; }
     .svg-chip-text { fill: #cdd8e5; }
-    .svg-repo-rule { stroke: #24304a; }
     .svg-repo-track { fill: #1a253a; }
     .svg-chart-grid { stroke: #2b3448; }
     .svg-chart-axis { stroke: #93a1b7; }
@@ -44,7 +43,6 @@
       .svg-chip-fill { fill: #f6f8fa; }
       .svg-chip-stroke { stroke: #d0d7de; }
       .svg-chip-text { fill: #24292f; }
-      .svg-repo-rule { stroke: #d8dee4; }
       .svg-repo-track { fill: #eff2f5; }
       .svg-chart-grid { stroke: #d8dee4; }
       .svg-chart-axis { stroke: #818b98; }
@@ -137,31 +135,26 @@
 <text x="984" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">1</text>
 <text x="1002" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">caretta-action</text>
 <text x="1217" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 14</text>
-<line x1="1002" y1="171" x2="1199" y2="171" class="svg-repo-rule"/>
 <rect x="1002" y="178" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="178" width="145" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">2</text>
 <text x="1002" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">semisocial</text>
 <text x="1217" y="220" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 14</text>
-<line x1="1002" y1="221" x2="1199" y2="221" class="svg-repo-rule"/>
 <rect x="1002" y="228" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="228" width="144" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">3</text>
 <text x="1002" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">caretta</text>
 <text x="1217" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 14</text>
-<line x1="1002" y1="271" x2="1199" y2="271" class="svg-repo-rule"/>
 <rect x="1002" y="278" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="278" width="143" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">4</text>
 <text x="1002" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">caretta-autopil…</text>
 <text x="1217" y="320" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 14</text>
-<line x1="1002" y1="321" x2="1199" y2="321" class="svg-repo-rule"/>
 <rect x="1002" y="328" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="328" width="143" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">5</text>
 <text x="1002" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">my-ci</text>
 <text x="1217" y="370" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 10</text>
-<line x1="1002" y1="371" x2="1199" y2="371" class="svg-repo-rule"/>
 <rect x="1002" y="378" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="378" width="6" height="7" rx="3.5" fill="#8b5cf6"/>
 <rect x="384" y="478" width="868" height="300" rx="12" fill="transparent" class="svg-stroke-panel"/>
