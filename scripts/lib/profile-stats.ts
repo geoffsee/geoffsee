@@ -38,6 +38,8 @@ export type ProfileStats = {
     note: string | null;
   };
   topPublicReposByStars: { nameWithOwner: string; stargazerCount: number }[];
+  /** Owned public non-fork repos by `updatedAt` desc, max 5 after exclusions. */
+  recentlyUpdatedPublicRepos: { nameWithOwner: string; updatedAt: string }[];
   recentStarsGiven: { nameWithOwner: string; starredAt: string }[];
 };
 
@@ -61,6 +63,9 @@ type UserGraph = {
       ownedPublicNonForkRepos: { totalCount: number };
       topStars: {
         nodes: { nameWithOwner: string; stargazerCount: number }[];
+      };
+      recentlyUpdated: {
+        nodes: { nameWithOwner: string; updatedAt: string }[];
       };
       reposForReleaseCount: {
         nodes: { releases: { totalCount: number } }[];
@@ -99,6 +104,9 @@ query ProfileStats($login: String!, $from: DateTime!, $to: DateTime!) {
     ownedPublicNonForkRepos: repositories(isFork: false, privacy: PUBLIC) { totalCount }
     topStars: repositories(isFork: false, privacy: PUBLIC, first: 8, orderBy: { field: STARGAZERS, direction: DESC}) {
       nodes { nameWithOwner stargazerCount }
+    }
+    recentlyUpdated: repositories(isFork: false, privacy: PUBLIC, first: 12, orderBy: { field: UPDATED_AT, direction: DESC }) {
+      nodes { nameWithOwner updatedAt }
     }
     reposForReleaseCount: repositories(isFork: false, privacy: PUBLIC, first: 100) {
       nodes { releases { totalCount } }
@@ -247,6 +255,12 @@ export function collectProfileStats(login: string): ProfileStats {
     u.contributionsCollection.totalCommitContributions === 0 &&
     (commitsIndexed ?? 0) > 0;
 
+  const excludeRecent = "geoffsee/geoffsee";
+  const recentlyUpdatedPublicRepos = u.recentlyUpdated.nodes
+    .filter((r) => r.nameWithOwner.toLowerCase() !== excludeRecent)
+    .slice(0, 5)
+    .map((r) => ({ nameWithOwner: r.nameWithOwner, updatedAt: r.updatedAt }));
+
   return {
     generatedAt: new Date().toISOString(),
     login: u.login,
@@ -285,6 +299,7 @@ export function collectProfileStats(login: string): ProfileStats {
         : null,
     },
     topPublicReposByStars: u.topStars.nodes.filter((r) => r.stargazerCount > 0),
+    recentlyUpdatedPublicRepos,
     recentStarsGiven: u.recentStarsGiven.edges.map((e) => ({
       nameWithOwner: e.node.nameWithOwner,
       starredAt: e.starredAt,

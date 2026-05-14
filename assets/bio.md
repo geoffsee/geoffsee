@@ -1,3 +1,3 @@
 Happy hacking.
 
-[Blog](https://geoffsee.github.io/blog/) · [geoff.seemueller.io](https://geoff.seemueller.io)
+[geoff.seemueller.io](https://geoff.seemueller.io) · [Blog](https://geoffsee.github.io/blog/)

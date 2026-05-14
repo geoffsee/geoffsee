@@ -151,13 +151,14 @@ export async function collectDownloadsStats(opts: {
     log(`Collecting npm packages for ${opts.npmUser}...`);
     const names = await collectNpmPackageNames(page, opts.npmUser);
     log(`Found ${names.length} npm packages; fetching weekly downloads...`);
-    const npmPackages: NpmPackage[] = [];
-    for (const name of names) {
-      let stats = await fetchNpmPackageStats(page, name);
-      if (stats.weeklyDownloads === null) stats = await fetchNpmPackageStats(page, name);
-      npmPackages.push(stats);
-      log(`  ${stats.name}: ${stats.weeklyDownloads ?? "?"}/wk`);
-    }
+    const npmPackages = await Promise.all(
+        names.map(async (name) => {
+          let stats = await fetchNpmPackageStats(page, name);
+          if (stats.weeklyDownloads === null) stats = await fetchNpmPackageStats(page, name);
+          log(`  ${stats.name}: ${stats.weeklyDownloads ?? "?"}/wk`);
+          return stats;
+        })
+    );
     npmPackages.sort((a, b) => (b.weeklyDownloads ?? -1) - (a.weeklyDownloads ?? -1));
 
     log(`Collecting crates for ${opts.cratesUser}...`);

@@ -30,6 +30,14 @@ function clip(s: string, max: number): string {
   return `${s.slice(0, Math.max(0, max - 1))}…`;
 }
 
+const REPO_UPDATED_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] as const;
+
+function fmtRepoUpdated(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  return `${REPO_UPDATED_MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}`;
+}
+
 export function statsToTextLines(s: ProfileStats): string[] {
   const lines: string[] = [];
   const title = s.name ? `${s.name} (@${s.login})` : `@${s.login}`;
@@ -76,7 +84,7 @@ export function statsToMetricsSvg(
   const title = s.name ?? s.login;
   const updated = `Updated ${s.generatedAt.slice(0, 16).replace("T", " ")}Z`;
   const heat = s.contributionsApi.weeklyHeatmapBuckets.slice(-53);
-  const topRepos = s.topPublicReposByStars.slice(0, 6);
+  const recentRepos = s.recentlyUpdatedPublicRepos ?? [];
   const recentStars = s.recentStarsGiven.slice(0, 3);
 
   const leftX = 28;
@@ -84,7 +92,10 @@ export function statsToMetricsSvg(
   const mainX = leftX + leftW + 26;
   const mainW = width - mainX - 28;
   const topY = 28;
-  const graphY = 452;
+  const mainMetricsY = topY + 56;
+  const mainMetricsH = 370;
+  const recentActivityGap = 24;
+  const graphY = mainMetricsY + mainMetricsH + recentActivityGap;
   const labelColor = "#aab6c8";
 
   const chartX = mainX + 26;
@@ -105,10 +116,8 @@ export function statsToMetricsSvg(
   parts.push(`<?xml version="1.0" encoding="UTF-8"?>`);
   parts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`);
   parts.push(`<defs>`);
-  parts.push(`<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0a0f1f"/><stop offset="50%" stop-color="#0b1324"/><stop offset="100%" stop-color="#0a0f18"/></linearGradient>`);
   parts.push(`<linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2ea043" stop-opacity="0.65"/><stop offset="100%" stop-color="#2ea043" stop-opacity="0.04"/></linearGradient>`);
   parts.push(`</defs>`);
-  parts.push(`<rect x="0" y="0" width="${width}" height="${height}" fill="url(#bg)"/>`);
 
   parts.push(`<rect x="${leftX}" y="${topY}" width="${leftW}" height="${height - 56}" rx="14" fill="#0b1220" stroke="#2b3448"/>`);
   parts.push(`<circle cx="${leftX + 36}" cy="${topY + 34}" r="20" fill="#121a2a" stroke="#55607a"/>`);
@@ -117,14 +126,17 @@ export function statsToMetricsSvg(
   parts.push(`<text x="${leftX + 78}" y="${topY + 56}" font-family="${font}" font-size="18" fill="#8b949e">@${escXml(s.login)}</text>`);
 
   let y = topY + 102;
-  const line = (label: string, value: string, isHeader = false): void => {
+  const line = (label: string, value: string, isHeader = false, categoryRow = false): void => {
     if (isHeader) {
       parts.push(`<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="24" font-weight="700" fill="#dce4ef">${escXml(value)}</text>`);
       y += 28;
       return;
     }
-    parts.push(`<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="13" fill="${labelColor}">${escXml(label)}</text>`);
-    parts.push(`<text x="${leftX + leftW - 18}" y="${y}" text-anchor="end" font-family="${font}" font-size="13" fill="#e6edf3">${escXml(value)}</text>`);
+    const rowWeight = categoryRow ? ` font-weight="700"` : "";
+    const labelFill = categoryRow ? "#ffffff" : labelColor;
+    const valueFill = categoryRow ? "#ffffff" : "#e6edf3";
+    parts.push(`<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="13"${rowWeight} fill="${labelFill}">${escXml(label)}</text>`);
+    parts.push(`<text x="${leftX + leftW - 18}" y="${y}" text-anchor="end" font-family="${font}" font-size="13"${rowWeight} fill="${valueFill}">${escXml(value)}</text>`);
     y += 24;
   };
   line("", "Profile", true);
@@ -149,18 +161,18 @@ export function statsToMetricsSvg(
 
     y += 12;
     line("", "Packages", true);
-    line(`npm (~${downloads.npm.packages.length})`, `${fmtCompact(npmTotal)}/wk`);
+    line(`npm (~${downloads.npm.packages.length})`, `${fmtCompact(npmTotal)}/wk`, false, true);
     for (const p of topNpm) {
       line(`  ${clip(p.name, 26)}`, fmtCompact(p.weeklyDownloads ?? 0));
     }
     y += 6;
-    line(`crates.io (${downloads.crates.crates.length})`, fmtCompact(cratesTotal));
+    line(`crates.io (${downloads.crates.crates.length})`, fmtCompact(cratesTotal), false, true);
     for (const c of topCrates) {
       line(`  ${clip(c.name, 26)}`, fmtCompact(c.allTimeDownloads ?? 0));
     }
   }
 
-  parts.push(`<rect x="${mainX}" y="${topY + 56}" width="${mainW}" height="370" rx="12" fill="#0b1220" stroke="#2b3448"/>`);
+  parts.push(`<rect x="${mainX}" y="${mainMetricsY}" width="${mainW}" height="${mainMetricsH}" rx="12" fill="#0b1220" stroke="#2b3448"/>`);
   const gap = 18;
   const cardW = Math.floor((mainW - gap * 4) / 3);
   const cardX1 = mainX + gap;
@@ -174,7 +186,7 @@ export function statsToMetricsSvg(
   };
   metricCard(cardX1, "Contribution Mix");
   metricCard(cardX2, "Momentum");
-  metricCard(cardX3, "Repo Star Ranking");
+  metricCard(cardX3, "Recently Updated");
 
   // Render recent stars as compact chips near the top of the main panel.
   const chipsY = topY + 60;
@@ -228,14 +240,19 @@ export function statsToMetricsSvg(
     mY += 34;
   }
 
-  const maxStars = Math.max(1, ...topRepos.map((r) => r.stargazerCount));
+  const times = recentRepos.map((r) => new Date(r.updatedAt).getTime());
+  const maxT = times.length ? Math.max(...times) : 0;
+  const minT = times.length ? Math.min(...times) : 0;
+  const recencySpan = maxT - minT;
   let rY = cardY + 64;
-  for (let i = 0; i < Math.min(5, topRepos.length); i++) {
-    const r = topRepos[i];
-    const barW = Math.max(6, Math.floor((r.stargazerCount / maxStars) * (cardW - 120)));
+  for (let i = 0; i < Math.min(5, recentRepos.length); i++) {
+    const r = recentRepos[i];
+    const t = times[i] ?? 0;
+    const ratio = recencySpan <= 0 ? 1 : (t - minT) / recencySpan;
+    const barW = Math.max(6, Math.floor(ratio * (cardW - 120)));
     parts.push(`<text x="${cardX3 + 16}" y="${rY}" font-family="${font}" font-size="14" fill="#cdd8e5">${i + 1}</text>`);
     parts.push(`<text x="${cardX3 + 34}" y="${rY}" font-family="${font}" font-size="14" fill="#cdd8e5">${escXml(clip(r.nameWithOwner.split("/")[1] ?? r.nameWithOwner, 16))}</text>`);
-    parts.push(`<text x="${cardX3 + cardW - 16}" y="${rY}" text-anchor="end" font-family="${font}" font-size="14" fill="#e6edf3">${r.stargazerCount}</text>`);
+    parts.push(`<text x="${cardX3 + cardW - 16}" y="${rY}" text-anchor="end" font-family="${font}" font-size="14" fill="#e6edf3">${escXml(fmtRepoUpdated(r.updatedAt))}</text>`);
     parts.push(`<line x1="${cardX3 + 34}" y1="${rY + 1}" x2="${cardX3 + cardW - 34}" y2="${rY + 1}" stroke="#24304a"/>`);
     parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${cardW - 90}" height="7" rx="3.5" fill="#1a253a"/>`);
     parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${barW}" height="7" rx="3.5" fill="#8b5cf6"/>`);

@@ -1,5 +1,5 @@
-![Stats](/github-metrics.svg?v=j2cjaf35)
+![Stats](/github-metrics.svg?v=1a4yknfv)
 
 Happy hacking.
 
-[Blog](https://geoffsee.github.io/blog/) · [geoff.seemueller.io](https://geoff.seemueller.io)
+[geoff.seemueller.io](https://geoff.seemueller.io) · [Blog](https://geoffsee.github.io/blog/)
