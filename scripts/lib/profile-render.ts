@@ -11,6 +11,66 @@ enum MetricsSvgPanelColor {
   Background = "transparent",
 }
 
+/** SVG CSS: defaults match dark UI; light scheme uses GitHub-like foreground/border colors. */
+function metricsSvgThemeStyles(): string {
+  return `<style><![CDATA[
+    .svg-stroke-panel { stroke: #2b3448; }
+    .svg-stroke-card { stroke: #34425f; }
+    .svg-text-primary { fill: #e6edf3; }
+    .svg-text-secondary { fill: #aab6c8; }
+    .svg-text-heading { fill: #dce4ef; }
+    .svg-text-handle { fill: #8b949e; }
+    .svg-text-strong { fill: #ffffff; }
+    .svg-text-muted-row { fill: #cdd8e5; }
+    .svg-avatar-fill { fill: #121a2a; }
+    .svg-avatar-stroke { stroke: #55607a; }
+    .svg-avatar-letter { fill: #e6edf3; }
+    .svg-chip-fill { fill: #18233a; }
+    .svg-chip-stroke { stroke: #2b3c5d; }
+    .svg-chip-text { fill: #cdd8e5; }
+    .svg-repo-rule { stroke: #24304a; }
+    .svg-repo-track { fill: #1a253a; }
+    .svg-chart-grid { stroke: #2b3448; }
+    .svg-chart-axis { stroke: #93a1b7; }
+    .svg-link { fill: #58a6ff; }
+    .svg-chart-line { stroke: #7ee787; }
+    .svg-heat-0 { fill: #161b22; }
+    .svg-heat-1 { fill: #0e4429; }
+    .svg-heat-2 { fill: #006d32; }
+    .svg-heat-3 { fill: #26a641; }
+    .svg-heat-4 { fill: #39d353; }
+
+    @media (prefers-color-scheme: light) {
+      .svg-stroke-panel, .svg-stroke-card { stroke: #d0d7de; }
+      .svg-text-primary { fill: #1f2328; }
+      .svg-text-secondary { fill: #59636e; }
+      .svg-text-heading { fill: #1f2328; }
+      .svg-text-handle { fill: #59636e; }
+      .svg-text-strong { fill: #1f2328; }
+      .svg-text-muted-row { fill: #424a53; }
+      .svg-avatar-fill { fill: #f6f8fa; }
+      .svg-avatar-stroke { stroke: #d0d7de; }
+      .svg-avatar-letter { fill: #24292f; }
+      .svg-chip-fill { fill: #f6f8fa; }
+      .svg-chip-stroke { stroke: #d0d7de; }
+      .svg-chip-text { fill: #24292f; }
+      .svg-repo-rule { stroke: #d8dee4; }
+      .svg-repo-track { fill: #eff2f5; }
+      .svg-chart-grid { stroke: #d8dee4; }
+      .svg-chart-axis { stroke: #818b98; }
+      .svg-link { fill: #0969da; }
+      .svg-chart-line { stroke: #1a7f37; }
+      .svg-heat-0 { fill: #ebedf0; }
+      .svg-heat-1 { fill: #9be9a8; }
+      .svg-heat-2 { fill: #40c463; }
+      .svg-heat-3 { fill: #30a14e; }
+      .svg-heat-4 { fill: #216e39; }
+      #chartFill stop:first-child { stop-color: #2da44e; }
+      #chartFill stop:last-child { stop-color: #2da44e; }
+    }
+  ]]></style>`;
+}
+
 function escXml(s: string): string {
   return s
     .replaceAll("&", "&amp;")
@@ -101,7 +161,6 @@ export function statsToMetricsSvg(
   const mainMetricsH = 370;
   const recentActivityGap = 24;
   const graphY = mainMetricsY + mainMetricsH + recentActivityGap;
-  const labelColor = "#aab6c8";
 
   const chartX = mainX + 26;
   const chartY = graphY + 56;
@@ -123,25 +182,42 @@ export function statsToMetricsSvg(
   parts.push(`<defs>`);
   parts.push(`<linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2ea043" stop-opacity="0.65"/><stop offset="100%" stop-color="#2ea043" stop-opacity="0.04"/></linearGradient>`);
   parts.push(`</defs>`);
+  parts.push(metricsSvgThemeStyles());
 
-  parts.push(`<rect x="${leftX}" y="${topY}" width="${leftW}" height="${height - 56}" rx="14" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
-  parts.push(`<circle cx="${leftX + 36}" cy="${topY + 34}" r="20" fill="#121a2a" stroke="#55607a"/>`);
-  parts.push(`<text x="${leftX + 36}" y="${topY + 40}" text-anchor="middle" font-family="${font}" font-size="18" font-weight="700" fill="#e6edf3">G</text>`);
-  parts.push(`<text x="${leftX + 78}" y="${topY + 30}" font-family="${font}" font-size="20" font-weight="700" fill="#e6edf3">${escXml(title)}</text>`);
-  parts.push(`<text x="${leftX + 78}" y="${topY + 56}" font-family="${font}" font-size="18" fill="#8b949e">@${escXml(s.login)}</text>`);
+  parts.push(
+    `<rect x="${leftX}" y="${topY}" width="${leftW}" height="${height - 56}" rx="14" fill="${MetricsSvgPanelColor.Background}" class="svg-stroke-panel"/>`,
+  );
+  parts.push(
+    `<circle cx="${leftX + 36}" cy="${topY + 34}" r="20" class="svg-avatar-fill svg-avatar-stroke"/>`,
+  );
+  parts.push(
+    `<text x="${leftX + 36}" y="${topY + 40}" text-anchor="middle" font-family="${font}" font-size="18" font-weight="700" class="svg-avatar-letter">G</text>`,
+  );
+  parts.push(
+    `<text x="${leftX + 78}" y="${topY + 30}" font-family="${font}" font-size="20" font-weight="700" class="svg-text-primary">${escXml(title)}</text>`,
+  );
+  parts.push(
+    `<text x="${leftX + 78}" y="${topY + 56}" font-family="${font}" font-size="18" class="svg-text-handle">@${escXml(s.login)}</text>`,
+  );
 
   let y = topY + 102;
   const line = (label: string, value: string, isHeader = false, categoryRow = false): void => {
     if (isHeader) {
-      parts.push(`<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="24" font-weight="700" fill="#dce4ef">${escXml(value)}</text>`);
+      parts.push(
+        `<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="24" font-weight="700" class="svg-text-heading">${escXml(value)}</text>`,
+      );
       y += 28;
       return;
     }
     const rowWeight = categoryRow ? ` font-weight="700"` : "";
-    const labelFill = categoryRow ? "#ffffff" : labelColor;
-    const valueFill = categoryRow ? "#ffffff" : "#e6edf3";
-    parts.push(`<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="13"${rowWeight} fill="${labelFill}">${escXml(label)}</text>`);
-    parts.push(`<text x="${leftX + leftW - 18}" y="${y}" text-anchor="end" font-family="${font}" font-size="13"${rowWeight} fill="${valueFill}">${escXml(value)}</text>`);
+    const labelClass = categoryRow ? "svg-text-strong" : "svg-text-secondary";
+    const valueClass = categoryRow ? "svg-text-strong" : "svg-text-primary";
+    parts.push(
+      `<text x="${leftX + 18}" y="${y}" font-family="${font}" font-size="13"${rowWeight} class="${labelClass}">${escXml(label)}</text>`,
+    );
+    parts.push(
+      `<text x="${leftX + leftW - 18}" y="${y}" text-anchor="end" font-family="${font}" font-size="13"${rowWeight} class="${valueClass}">${escXml(value)}</text>`,
+    );
     y += 24;
   };
   line("", "Profile", true);
@@ -177,7 +253,9 @@ export function statsToMetricsSvg(
     }
   }
 
-  parts.push(`<rect x="${mainX}" y="${mainMetricsY}" width="${mainW}" height="${mainMetricsH}" rx="12" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
+  parts.push(
+    `<rect x="${mainX}" y="${mainMetricsY}" width="${mainW}" height="${mainMetricsH}" rx="12" fill="${MetricsSvgPanelColor.Background}" class="svg-stroke-panel"/>`,
+  );
   const gap = 18;
   const cardW = Math.floor((mainW - gap * 4) / 3);
   const cardX1 = mainX + gap;
@@ -186,8 +264,12 @@ export function statsToMetricsSvg(
   const cardY = topY + 78;
   const cardH = 326;
   const metricCard = (x: number, heading: string): void => {
-    parts.push(`<rect x="${x}" y="${cardY}" width="${cardW}" height="${cardH}" rx="10" fill="${MetricsSvgPanelColor.Background}" stroke="#34425f"/>`);
-    parts.push(`<text x="${x + 16}" y="${cardY + 30}" font-family="${font}" font-size="16" font-weight="700" fill="#e6edf3">${escXml(heading)}</text>`);
+    parts.push(
+      `<rect x="${x}" y="${cardY}" width="${cardW}" height="${cardH}" rx="10" fill="${MetricsSvgPanelColor.Background}" class="svg-stroke-card"/>`,
+    );
+    parts.push(
+      `<text x="${x + 16}" y="${cardY + 30}" font-family="${font}" font-size="16" font-weight="700" class="svg-text-primary">${escXml(heading)}</text>`,
+    );
   };
   metricCard(cardX1, "Contribution Mix");
   metricCard(cardX2, "Momentum");
@@ -195,13 +277,19 @@ export function statsToMetricsSvg(
 
   // Render recent stars as compact chips near the top of the main panel.
   const chipsY = topY + 60;
-  parts.push(`<text x="${mainX + 20}" y="${chipsY}" font-family="${font}" font-size="12" fill="${labelColor}">Recent stars</text>`);
+  parts.push(
+    `<text x="${mainX + 20}" y="${chipsY}" font-family="${font}" font-size="12" class="svg-text-secondary">Recent stars</text>`,
+  );
   let chipX = mainX + 98;
   for (let i = 0; i < recentStars.length; i++) {
     const label = clip(recentStars[i].nameWithOwner, 22);
     const chipW = Math.min(220, Math.max(90, 16 + label.length * 7));
-    parts.push(`<rect x="${chipX}" y="${chipsY - 12}" width="${chipW}" height="20" rx="10" fill="#18233a" stroke="#2b3c5d"/>`);
-    parts.push(`<text x="${chipX + 10}" y="${chipsY + 2}" font-family="${font}" font-size="12" fill="#cdd8e5">${escXml(label)}</text>`);
+    parts.push(
+      `<rect x="${chipX}" y="${chipsY - 12}" width="${chipW}" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>`,
+    );
+    parts.push(
+      `<text x="${chipX + 10}" y="${chipsY + 2}" font-family="${font}" font-size="12" class="svg-chip-text">${escXml(label)}</text>`,
+    );
     chipX += chipW + 8;
     if (chipX > mainX + mainW - 220) break;
   }
@@ -225,8 +313,12 @@ export function statsToMetricsSvg(
   }
   for (const [label, value, color] of mixRows) {
     parts.push(`<circle cx="${cardX1 + 20}" cy="${mixY - 4}" r="4" fill="${color}"/>`);
-    parts.push(`<text x="${cardX1 + 32}" y="${mixY}" font-family="${font}" font-size="14" fill="#cdd8e5">${escXml(String(label))}</text>`);
-    parts.push(`<text x="${cardX1 + cardW - 16}" y="${mixY}" text-anchor="end" font-family="${font}" font-size="14" fill="#e6edf3">${value}</text>`);
+    parts.push(
+      `<text x="${cardX1 + 32}" y="${mixY}" font-family="${font}" font-size="14" class="svg-text-muted-row">${escXml(String(label))}</text>`,
+    );
+    parts.push(
+      `<text x="${cardX1 + cardW - 16}" y="${mixY}" text-anchor="end" font-family="${font}" font-size="14" class="svg-text-primary">${value}</text>`,
+    );
     mixY += 44;
   }
 
@@ -240,8 +332,12 @@ export function statsToMetricsSvg(
   ];
   let mY = cardY + 64;
   for (const [label, value] of momentumRows) {
-    parts.push(`<text x="${cardX2 + 16}" y="${mY}" font-family="${font}" font-size="14" fill="${labelColor}">${escXml(label)}</text>`);
-    parts.push(`<text x="${cardX2 + cardW - 16}" y="${mY}" text-anchor="end" font-family="${font}" font-size="14" fill="#e6edf3">${escXml(value)}</text>`);
+    parts.push(
+      `<text x="${cardX2 + 16}" y="${mY}" font-family="${font}" font-size="14" class="svg-text-secondary">${escXml(label)}</text>`,
+    );
+    parts.push(
+      `<text x="${cardX2 + cardW - 16}" y="${mY}" text-anchor="end" font-family="${font}" font-size="14" class="svg-text-primary">${escXml(value)}</text>`,
+    );
     mY += 34;
   }
 
@@ -255,41 +351,60 @@ export function statsToMetricsSvg(
     const t = times[i] ?? 0;
     const ratio = recencySpan <= 0 ? 1 : (t - minT) / recencySpan;
     const barW = Math.max(6, Math.floor(ratio * (cardW - 120)));
-    parts.push(`<text x="${cardX3 + 16}" y="${rY}" font-family="${font}" font-size="14" fill="#cdd8e5">${i + 1}</text>`);
-    parts.push(`<text x="${cardX3 + 34}" y="${rY}" font-family="${font}" font-size="14" fill="#cdd8e5">${escXml(clip(r.nameWithOwner.split("/")[1] ?? r.nameWithOwner, 16))}</text>`);
-    parts.push(`<text x="${cardX3 + cardW - 16}" y="${rY}" text-anchor="end" font-family="${font}" font-size="14" fill="#e6edf3">${escXml(fmtRepoUpdated(r.updatedAt))}</text>`);
-    parts.push(`<line x1="${cardX3 + 34}" y1="${rY + 1}" x2="${cardX3 + cardW - 34}" y2="${rY + 1}" stroke="#24304a"/>`);
-    parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${cardW - 90}" height="7" rx="3.5" fill="#1a253a"/>`);
+    parts.push(
+      `<text x="${cardX3 + 16}" y="${rY}" font-family="${font}" font-size="14" class="svg-text-muted-row">${i + 1}</text>`,
+    );
+    parts.push(
+      `<text x="${cardX3 + 34}" y="${rY}" font-family="${font}" font-size="14" class="svg-text-muted-row">${escXml(clip(r.nameWithOwner.split("/")[1] ?? r.nameWithOwner, 16))}</text>`,
+    );
+    parts.push(
+      `<text x="${cardX3 + cardW - 16}" y="${rY}" text-anchor="end" font-family="${font}" font-size="14" class="svg-text-primary">${escXml(fmtRepoUpdated(r.updatedAt))}</text>`,
+    );
+    parts.push(`<line x1="${cardX3 + 34}" y1="${rY + 1}" x2="${cardX3 + cardW - 34}" y2="${rY + 1}" class="svg-repo-rule"/>`);
+    parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${cardW - 90}" height="7" rx="3.5" class="svg-repo-track"/>`);
     parts.push(`<rect x="${cardX3 + 34}" y="${rY + 8}" width="${barW}" height="7" rx="3.5" fill="#8b5cf6"/>`);
     rY += 50;
   }
 
-  parts.push(`<rect x="${mainX}" y="${graphY}" width="${mainW}" height="300" rx="12" fill="${MetricsSvgPanelColor.Background}" stroke="#2b3448"/>`);
-  parts.push(`<text x="${mainX + 24}" y="${graphY + 34}" font-family="${font}" font-size="18" fill="#dce4ef">Recent activity</text>`);
+  parts.push(
+    `<rect x="${mainX}" y="${graphY}" width="${mainW}" height="300" rx="12" fill="${MetricsSvgPanelColor.Background}" class="svg-stroke-panel"/>`,
+  );
+  parts.push(
+    `<text x="${mainX + 24}" y="${graphY + 34}" font-family="${font}" font-size="18" class="svg-text-heading">Recent activity</text>`,
+  );
   for (let i = 0; i < 5; i++) {
     const gy = chartY + (i * chartH) / 4;
-    parts.push(`<line x1="${chartX}" y1="${gy}" x2="${chartX + chartW}" y2="${gy}" stroke="#2b3448" stroke-dasharray="2 8"/>`);
+    parts.push(`<line x1="${chartX}" y1="${gy}" x2="${chartX + chartW}" y2="${gy}" class="svg-chart-grid" stroke-dasharray="2 8"/>`);
   }
   const isFlat = heat.every((v) => v === 0);
   if (!isFlat) {
     parts.push(`<path d="${fillPath}" fill="url(#chartFill)"/>`);
-    parts.push(`<polyline points="${points.join(" ")}" fill="none" stroke="#7ee787" stroke-width="1.5"/>`);
+    parts.push(
+      `<polyline points="${points.join(" ")}" fill="none" stroke-width="1.5" class="svg-chart-line"/>`,
+    );
   } else {
-    parts.push(`<text x="${chartX + chartW / 2}" y="${chartY + chartH / 2}" text-anchor="middle" font-family="${font}" font-size="15" fill="${labelColor}">No recent contribution detail available from API token.</text>`);
+    parts.push(
+      `<text x="${chartX + chartW / 2}" y="${chartY + chartH / 2}" text-anchor="middle" font-family="${font}" font-size="15" class="svg-text-secondary">No recent contribution detail available from API token.</text>`,
+    );
   }
-  parts.push(`<line x1="${chartX}" y1="${chartY + chartH}" x2="${chartX + chartW}" y2="${chartY + chartH}" stroke="#93a1b7"/>`);
+  parts.push(`<line x1="${chartX}" y1="${chartY + chartH}" x2="${chartX + chartW}" y2="${chartY + chartH}" class="svg-chart-axis"/>`);
   const cell = 9;
   const hGap = 4;
   const hX = chartX;
   const hY = chartY + chartH + 24;
-  const palette = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"];
   for (let i = 0; i < 53; i++) {
-    const bucket = heat[i] ?? 0;
-    parts.push(`<rect x="${hX + i * (cell + hGap)}" y="${hY}" width="${cell}" height="${cell}" rx="2" fill="${palette[bucket] ?? palette[0]}"/>`);
+    const bucket = Math.min(4, Math.max(0, heat[i] ?? 0));
+    parts.push(
+      `<rect x="${hX + i * (cell + hGap)}" y="${hY}" width="${cell}" height="${cell}" rx="2" class="svg-heat-${bucket}"/>`,
+    );
   }
-  parts.push(`<text x="${mainX + mainW - 24}" y="${graphY + 262}" text-anchor="end" font-family="${font}" font-size="14" fill="${labelColor}">${escXml(updated)}</text>`);
+  parts.push(
+    `<text x="${mainX + mainW - 24}" y="${graphY + 262}" text-anchor="end" font-family="${font}" font-size="14" class="svg-text-secondary">${escXml(updated)}</text>`,
+  );
   if (s.websiteUrl) {
-    parts.push(`<text x="${mainX + mainW - 24}" y="${graphY + 262}" text-anchor="end" font-family="${font}" font-size="14" fill="#58a6ff">${escXml(s.websiteUrl)}</text>`);
+    parts.push(
+      `<text x="${mainX + mainW - 24}" y="${graphY + 262}" text-anchor="end" font-family="${font}" font-size="14" class="svg-link">${escXml(s.websiteUrl)}</text>`,
+    );
   }
   parts.push(`</svg>`);
   return `${parts.join("\n")}\n`;
