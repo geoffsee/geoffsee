@@ -1,6 +1,6 @@
 /**
- * Scrape npm + crates.io profile pages with Playwright to collect package
- * download counts.
+ * Scrape npm profile pages with Playwright for npm download counts and collect
+ * crates.io data from the official crates.io API (with HTML scraping fallback).
  *
  * Requires: playwright (and `bunx playwright install chromium`).
  */
@@ -108,50 +108,110 @@ type CratesListingPage = {
   total: string | null;
 };
 
-async function fetchCratesListingPage(page: Page, user: string, pageIdx: number): Promise<CratesListingPage> {
-  const url = `https://crates.io/users/${encodeURIComponent(user)}?page=${pageIdx}`;
-  await page.goto(url, { waitUntil: "networkidle" });
-  await page.waitForSelector('a[href^="/crates/"]', { timeout: 15000 }).catch(() => {});
+type CratesApiCrate = {
+  name?: string;
+  max_version?: string | null;
+  newest_version?: string | null;
+  default_version?: string | null;
+  downloads?: number | null;
+  recent_downloads?: number | null;
+};
 
-  return page.evaluate(() => {
-    const items: CratesListingRow[] = [];
-    const seen = new Set<string>();
-    document.querySelectorAll('a[href^="/crates/"]').forEach((a) => {
-      const href = a.getAttribute("href") || "";
-      const m = href.match(/^\/crates\/([^/?#]+)$/);
-      if (!m) return;
-      const name = m[1];
-      if (seen.has(name)) return;
-      const row = a.closest("li, article");
-      if (!row) return;
-      const text = (row as HTMLElement).innerText || "";
-      const versionMatch = text.match(/\bv([^\s\n]+)/);
-      const allTimeMatch = text.match(/All-?Time:\s*([\d,]+)/i);
-      const recentMatch = text.match(/Recent:\s*([\d,]+)/i);
-      if (!allTimeMatch && !recentMatch) return;
-      seen.add(name);
-      items.push({
-        name,
-        version: versionMatch ? versionMatch[1] : null,
-        allTime: allTimeMatch ? allTimeMatch[1] : null,
-        recent: recentMatch ? recentMatch[1] : null,
-      });
-    });
-    const total = (document.body.innerText.match(/of\s+(\d+)\s+total/i) || [])[1] || null;
-    return { items, total };
+type CratesApiPage = {
+  crates?: CratesApiCrate[] | null;
+  meta?: {
+    next_page?: string | null;
+    prev_page?: string | null;
+    total?: number | null;
+  };
+};
+
+function isObject(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null;
+}
+
+function numberOrNull(v: unknown): number | null {
+  if (typeof v === "number" && Number.isFinite(v)) return v;
+  return null;
+}
+
+async function collectCratesFromApi(user: string, log: (msg: string) => void): Promise<Crate[] | null> {
+  const userUrl = `https://crates.io/api/v1/users/${encodeURIComponent(user)}`;
+  const userResponse = await fetch(userUrl, {
+    headers: { "User-Agent": PLAYWRIGHT_BROWSER_USER_AGENT, Accept: "application/json" },
   });
+  if (!userResponse.ok) {
+    log(`Could not resolve crates.io user id for ${user}: ${userResponse.status}`);
+    return null;
+  }
+
+  let userData: unknown;
+  try {
+    userData = await userResponse.json();
+  } catch (error) {
+    log(`Could not parse crates.io user response for ${user}: ${error instanceof Error ? error.message : String(error)}`);
+    return null;
+  }
+
+  const uid = isObject(userData) && isObject(userData.user) ? userData.user.id : null;
+  if (!(typeof uid === "number" || typeof uid === "string")) {
+    log(`Could not resolve crates.io id from API for ${user}.`);
+    return null;
+  }
+
+  const out = new Map<string, Crate>();
+  let next = `https://crates.io/api/v1/crates?per_page=100&user_id=${encodeURIComponent(String(uid))}&page=1`;
+  while (next) {
+    const response = await fetch(next, {
+      headers: { "User-Agent": PLAYWRIGHT_BROWSER_USER_AGENT, Accept: "application/json" },
+    });
+    if (!response.ok) {
+      log(`Could not fetch crates.io crates for ${user} at ${next}: ${response.status}`);
+      return null;
+    }
+
+    let payload: unknown;
+    try {
+      payload = await response.json();
+    } catch (error) {
+      log(`Could not parse crates.io crates response for ${user}: ${error instanceof Error ? error.message : String(error)}`);
+      return null;
+    }
+    const pageData = payload as CratesApiPage;
+    const rows = isObject(pageData) ? pageData.crates : null;
+    if (!Array.isArray(rows)) {
+      return null;
+    }
+
+    for (const item of rows) {
+      if (!isObject(item) || typeof item.name !== "string" || !item.name.trim()) continue;
+      const name = item.name.trim();
+      out.set(name, {
+        name,
+        version: typeof item.max_version === "string" && item.max_version
+          ? item.max_version
+          : typeof item.newest_version === "string" && item.newest_version
+            ? item.newest_version
+            : typeof item.default_version === "string" && item.default_version
+              ? item.default_version
+              : null,
+        allTimeDownloads: numberOrNull(item.downloads),
+        recentDownloads: numberOrNull(item.recent_downloads),
+      });
+    }
+
+    const nextPage = isObject(pageData.meta) ? pageData.meta.next_page : null;
+    if (typeof nextPage === "string" && nextPage.length > 0) {
+      next = new URL(nextPage, "https://crates.io").toString();
+    } else {
+      next = "";
+    }
+  }
+
+  return [...out.values()];
 }
 
-function listingRowsToCrates(rows: CratesListingRow[]): Crate[] {
-  return rows.map((it) => ({
-    name: it.name,
-    version: it.version,
-    allTimeDownloads: parseIntLoose(it.allTime),
-    recentDownloads: parseIntLoose(it.recent),
-  }));
-}
-
-async function collectCrates(ctx: BrowserContext, page: Page, user: string): Promise<Crate[]> {
+async function collectCratesFromHtml(ctx: BrowserContext, page: Page, user: string): Promise<Crate[]> {
   const byName = new Map<string, Crate>();
 
   const addPage = (listing: CratesListingPage): void => {
@@ -201,6 +261,63 @@ async function collectCrates(ctx: BrowserContext, page: Page, user: string): Pro
   return [...byName.values()];
 }
 
+async function fetchCratesListingPage(page: Page, user: string, pageIdx: number): Promise<CratesListingPage> {
+  const url = `https://crates.io/users/${encodeURIComponent(user)}?page=${pageIdx}`;
+  await page.goto(url, { waitUntil: "networkidle" });
+  await page.waitForSelector('a[href^="/crates/"]', { timeout: 15000 }).catch(() => {});
+
+  return page.evaluate(() => {
+    const items: CratesListingRow[] = [];
+    const seen = new Set<string>();
+    document.querySelectorAll('a[href^="/crates/"]').forEach((a) => {
+      const href = a.getAttribute("href") || "";
+      const m = href.match(/^\/crates\/([^/?#]+)$/);
+      if (!m) return;
+      const name = m[1];
+      if (seen.has(name)) return;
+      const row = a.closest("li, article");
+      if (!row) return;
+      const text = (row as HTMLElement).innerText || "";
+      const versionMatch = text.match(/\bv([^\s\n]+)/);
+      const allTimeMatch = text.match(/All-?Time:\s*([\d,]+)/i);
+      const recentMatch = text.match(/Recent:\s*([\d,]+)/i);
+      if (!allTimeMatch && !recentMatch) return;
+      seen.add(name);
+      items.push({
+        name,
+        version: versionMatch ? versionMatch[1] : null,
+        allTime: allTimeMatch ? allTimeMatch[1] : null,
+        recent: recentMatch ? recentMatch[1] : null,
+      });
+    });
+    const total = (document.body.innerText.match(/of\s+(\d+)\s+total/i) || [])[1] || null;
+    return { items, total };
+  });
+}
+
+function listingRowsToCrates(rows: CratesListingRow[]): Crate[] {
+  return rows.map((it) => ({
+    name: it.name,
+    version: it.version,
+    allTimeDownloads: parseIntLoose(it.allTime),
+    recentDownloads: parseIntLoose(it.recent),
+  }));
+}
+
+async function collectCrates(
+  ctx: BrowserContext,
+  page: Page,
+  user: string,
+  log: (msg: string) => void,
+): Promise<Crate[]> {
+  const fromApi = await collectCratesFromApi(user, (msg) => log(msg));
+  if (fromApi?.length) return fromApi;
+  if (fromApi) return [];
+
+  log(`Falling back to HTML scraping for crates.io user ${user}...`);
+  return collectCratesFromHtml(ctx, page, user);
+}
+
 export async function collectDownloadsStats(opts: {
   npmUser: string;
   cratesUser: string;
@@ -219,7 +336,7 @@ export async function collectDownloadsStats(opts: {
     npmPackages.sort((a, b) => (b.weeklyDownloads ?? -1) - (a.weeklyDownloads ?? -1));
 
     log(`Collecting crates for ${opts.cratesUser}...`);
-    const crates = await collectCrates(ctx, page, opts.cratesUser);
+    const crates = await collectCrates(ctx, page, opts.cratesUser, log);
     log(`Found ${crates.length} crates.`);
     crates.sort((a, b) => (b.allTimeDownloads ?? -1) - (a.allTimeDownloads ?? -1));
 
