@@ -1,9 +1,10 @@
 #!/usr/bin/env bun
 /**
  * Output JSON of npm packages (seemueller-io) and crates.io crates (geoffsee)
- * with download counts, scraped via Playwright.
+ * with download counts. Uses the npm registry + crates.io APIs by default and
+ * falls back to Playwright HTML scraping only if those APIs fail.
  *
- * Requires: bun add -d playwright && bunx playwright install chromium
+ * The Playwright fallback needs: bun add -d playwright && bunx playwright install chromium
  *
  * Usage:
  *   bun scripts/downloads-stats.ts [--npm-user USER] [--crates-user USER] [--out PATH] [--headed]

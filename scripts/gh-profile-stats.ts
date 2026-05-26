@@ -178,7 +178,7 @@ Options:
       --readme PATH      (default: README.md)
       --bio PATH         (default: assets/bio.md)
       --image-ref PATH   README image URL (default: /github-metrics.svg)
-      --downloads        Also scrape npm + crates.io downloads (Playwright)
+      --downloads        Also fetch npm + crates.io downloads (registry APIs)
       --npm-user USER    npm handle (default: seemueller-io)
       --crates-user USER crates.io handle (default: geoffsee)
       --downloads-in PATH  Load downloads JSON from PATH (skips scraping)

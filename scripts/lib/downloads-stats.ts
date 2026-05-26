@@ -1,8 +1,10 @@
 /**
- * Scrape npm profile pages with Playwright for npm download counts and collect
- * crates.io data from the official crates.io API (with HTML scraping fallback).
+ * Collect npm download counts from the official npm registry/downloads APIs
+ * and crates.io data from the official crates.io API. Falls back to Playwright
+ * HTML scraping only when the APIs fail.
  *
- * Requires: playwright (and `bunx playwright install chromium`).
+ * Requires: playwright (and `bunx playwright install chromium`) only for the
+ * HTML fallback paths.
  */
 
 import { chromium, type Browser, type BrowserContext, type Page } from "playwright";
@@ -34,6 +36,125 @@ function parseIntLoose(s: string | null | undefined): number | null {
   if (!s) return null;
   const m = s.replace(/,/g, "").match(/-?\d+/);
   return m ? parseInt(m[0], 10) : null;
+}
+
+type NpmSearchPackage = {
+  name?: string;
+  version?: string | null;
+};
+
+type NpmSearchObject = {
+  package?: NpmSearchPackage | null;
+};
+
+type NpmSearchResponse = {
+  objects?: NpmSearchObject[] | null;
+  total?: number | null;
+};
+
+type NpmDownloadsPoint = {
+  downloads?: number | null;
+  package?: string | null;
+};
+
+async function fetchJson(url: string): Promise<unknown> {
+  const response = await fetch(url, {
+    headers: { Accept: "application/json", "User-Agent": PLAYWRIGHT_BROWSER_USER_AGENT },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} for ${url}`);
+  }
+  return response.json();
+}
+
+async function collectNpmPackagesFromApi(
+  user: string,
+  log: (msg: string) => void,
+): Promise<NpmPackage[] | null> {
+  const byName = new Map<string, { version: string | null }>();
+  const pageSize = 250;
+  let from = 0;
+  let total: number | null = null;
+
+  while (true) {
+    const url = `https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(`maintainer:${user}`)}&size=${pageSize}&from=${from}`;
+    let payload: unknown;
+    try {
+      payload = await fetchJson(url);
+    } catch (error) {
+      log(`Could not fetch npm search for ${user}: ${error instanceof Error ? error.message : String(error)}`);
+      return null;
+    }
+    if (!isObject(payload)) return null;
+    const data = payload as NpmSearchResponse;
+    const objects = Array.isArray(data.objects) ? data.objects : [];
+    if (typeof data.total === "number") total = data.total;
+
+    for (const obj of objects) {
+      const pkg = isObject(obj) ? obj.package : null;
+      if (!isObject(pkg) || typeof pkg.name !== "string" || !pkg.name.trim()) continue;
+      const name = pkg.name.trim();
+      if (byName.has(name)) continue;
+      byName.set(name, {
+        version: typeof pkg.version === "string" && pkg.version ? pkg.version : null,
+      });
+    }
+
+    from += objects.length;
+    if (objects.length < pageSize) break;
+    if (total !== null && from >= total) break;
+    if (objects.length === 0) break;
+  }
+
+  const names = [...byName.keys()];
+  if (names.length === 0) return [];
+
+  const downloads = await fetchNpmWeeklyDownloads(names, log);
+
+  const out: NpmPackage[] = names.map((name) => ({
+    name,
+    version: byName.get(name)?.version ?? null,
+    weeklyDownloads: downloads.get(name) ?? null,
+  }));
+  for (const pkg of out) {
+    log(`  ${pkg.name}: ${pkg.weeklyDownloads ?? "?"}/wk`);
+  }
+  return out;
+}
+
+const NPM_DOWNLOADS_CONCURRENCY = 8;
+
+async function fetchNpmWeeklyDownloads(
+  names: string[],
+  log: (msg: string) => void,
+): Promise<Map<string, number>> {
+  const out = new Map<string, number>();
+  let next = 0;
+
+  async function worker(): Promise<void> {
+    while (true) {
+      const i = next++;
+      if (i >= names.length) return;
+      const name = names[i]!;
+      const url = `https://api.npmjs.org/downloads/point/last-week/${encodeURIComponent(name)}`;
+      try {
+        const payload = (await fetchJson(url)) as NpmDownloadsPoint | null;
+        const downloads = isObject(payload) ? payload.downloads : null;
+        if (typeof downloads === "number" && Number.isFinite(downloads)) {
+          out.set(name, downloads);
+        }
+      } catch (error) {
+        log(`Could not fetch npm downloads for ${name}: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    }
+  }
+
+  const workers = Array.from(
+    { length: Math.min(NPM_DOWNLOADS_CONCURRENCY, names.length) },
+    () => worker(),
+  );
+  await Promise.all(workers);
+  return out;
 }
 
 async function collectNpmPackageNames(page: Page, user: string): Promise<string[]> {
@@ -304,18 +425,31 @@ function listingRowsToCrates(rows: CratesListingRow[]): Crate[] {
   }));
 }
 
-async function collectCrates(
+async function collectNpmFromHtml(
   ctx: BrowserContext,
   page: Page,
   user: string,
   log: (msg: string) => void,
-): Promise<Crate[]> {
-  const fromApi = await collectCratesFromApi(user, (msg) => log(msg));
-  if (fromApi?.length) return fromApi;
-  if (fromApi) return [];
+): Promise<NpmPackage[]> {
+  const names = await collectNpmPackageNames(page, user);
+  return collectNpmPackageStatsParallel(ctx, names, log);
+}
 
-  log(`Falling back to HTML scraping for crates.io user ${user}...`);
-  return collectCratesFromHtml(ctx, page, user);
+type BrowserHandle = {
+  ctx: BrowserContext;
+  page: Page;
+  close: () => Promise<void>;
+};
+
+async function launchBrowser(headed: boolean): Promise<BrowserHandle> {
+  const browser: Browser = await chromium.launch({ headless: !headed });
+  const ctx = await browser.newContext({ userAgent: PLAYWRIGHT_BROWSER_USER_AGENT });
+  const page = await ctx.newPage();
+  return {
+    ctx,
+    page,
+    close: () => browser.close(),
+  };
 }
 
 export async function collectDownloadsStats(opts: {
@@ -325,18 +459,33 @@ export async function collectDownloadsStats(opts: {
   onProgress?: (msg: string) => void;
 }): Promise<DownloadsStats> {
   const log = opts.onProgress ?? (() => {});
-  const browser: Browser = await chromium.launch({ headless: !opts.headed });
-  const ctx = await browser.newContext({ userAgent: PLAYWRIGHT_BROWSER_USER_AGENT });
-  const page = await ctx.newPage();
-  try {
-    log(`Collecting npm packages for ${opts.npmUser}...`);
-    const names = await collectNpmPackageNames(page, opts.npmUser);
-    log(`Found ${names.length} npm packages; fetching weekly downloads...`);
-    const npmPackages = await collectNpmPackageStatsParallel(ctx, names, log);
-    npmPackages.sort((a, b) => (b.weeklyDownloads ?? -1) - (a.weeklyDownloads ?? -1));
 
-    log(`Collecting crates for ${opts.cratesUser}...`);
-    const crates = await collectCrates(ctx, page, opts.cratesUser, log);
+  log(`Collecting npm packages for ${opts.npmUser} via registry API...`);
+  let npmPackages = await collectNpmPackagesFromApi(opts.npmUser, log);
+  let crates: Crate[] | null = null;
+  let browser: BrowserHandle | null = null;
+  try {
+    log(`Collecting crates for ${opts.cratesUser} via crates.io API...`);
+    const cratesFromApi = await collectCratesFromApi(opts.cratesUser, log);
+    if (cratesFromApi !== null) {
+      crates = cratesFromApi;
+    }
+
+    if (npmPackages === null || crates === null) {
+      browser = await launchBrowser(opts.headed ?? false);
+    }
+
+    if (npmPackages === null) {
+      log(`Falling back to HTML scraping for npm user ${opts.npmUser}...`);
+      npmPackages = await collectNpmFromHtml(browser!.ctx, browser!.page, opts.npmUser, log);
+    }
+    if (crates === null) {
+      log(`Falling back to HTML scraping for crates.io user ${opts.cratesUser}...`);
+      crates = await collectCratesFromHtml(browser!.ctx, browser!.page, opts.cratesUser);
+    }
+
+    log(`Found ${npmPackages.length} npm packages.`);
+    npmPackages.sort((a, b) => (b.weeklyDownloads ?? -1) - (a.weeklyDownloads ?? -1));
     log(`Found ${crates.length} crates.`);
     crates.sort((a, b) => (b.allTimeDownloads ?? -1) - (a.allTimeDownloads ?? -1));
 
@@ -346,7 +495,7 @@ export async function collectDownloadsStats(opts: {
       crates: { user: opts.cratesUser, crates },
     };
   } finally {
-    await browser.close();
+    if (browser) await browser.close();
   }
 }
 
