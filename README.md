@@ -1,4 +1,4 @@
-![Stats](/github-metrics.svg?v=30a6703z)
+![Stats](/github-metrics.svg?v=h743xvzw)
 
 Happy hacking.
 
