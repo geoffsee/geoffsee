@@ -116,12 +116,12 @@
 <text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">375</text>
 <circle cx="422" cy="272" r="4" fill="#a855f7"/>
 <text x="434" y="276" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">PRs</text>
-<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">260</text>
+<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">263</text>
 <circle cx="422" cy="316" r="4" fill="#f59e0b"/>
 <text x="434" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Reviews</text>
 <text x="651" y="320" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">35</text>
 <text x="701" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y PRs opened</text>
-<text x="934" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">260</text>
+<text x="934" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">259</text>
 <text x="701" y="204" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y issues opened</text>
 <text x="934" y="204" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">374</text>
 <text x="701" y="238" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y reviews</text>
@@ -134,24 +134,24 @@
 <text x="934" y="340" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">6</text>
 <text x="984" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">1</text>
 <text x="1002" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">bevy-osc-app</text>
-<text x="1217" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 1</text>
+<text x="1217" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 2</text>
 <rect x="1002" y="178" width="175" height="7" rx="3.5" class="svg-repo-track"/>
 <rect x="1002" y="178" width="145" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">2</text>
-<text x="1002" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">cortex-enigma</text>
-<text x="1217" y="220" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 1</text>
+<text x="1002" y="220" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">autopilot-examp…</text>
+<text x="1217" y="220" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 2</text>
 <rect x="1002" y="228" width="175" height="7" rx="3.5" class="svg-repo-track"/>
-<rect x="1002" y="228" width="141" height="7" rx="3.5" fill="#8b5cf6"/>
+<rect x="1002" y="228" width="133" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">3</text>
-<text x="1002" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">autopilot-examp…</text>
+<text x="1002" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">cortex-enigma</text>
 <text x="1217" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 1</text>
 <rect x="1002" y="278" width="175" height="7" rx="3.5" class="svg-repo-track"/>
-<rect x="1002" y="278" width="139" height="7" rx="3.5" fill="#8b5cf6"/>
+<rect x="1002" y="278" width="125" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">4</text>
 <text x="1002" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">my-ci</text>
 <text x="1217" y="320" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jun 1</text>
 <rect x="1002" y="328" width="175" height="7" rx="3.5" class="svg-repo-track"/>
-<rect x="1002" y="328" width="128" height="7" rx="3.5" fill="#8b5cf6"/>
+<rect x="1002" y="328" width="113" height="7" rx="3.5" fill="#8b5cf6"/>
 <text x="984" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">5</text>
 <text x="1002" y="370" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">design-systems</text>
 <text x="1217" y="370" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">May 26</text>
@@ -220,5 +220,5 @@
 <rect x="1060" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1073" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1086" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-02 00:43Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-03 00:49Z</text>
 </svg>
