@@ -6,6 +6,17 @@ import type { ProfileStats } from "./profile-stats.ts";
 import type { DownloadsStats } from "./downloads-stats.ts";
 import { sumCratesAllTime, sumNpmWeekly } from "./downloads-stats.ts";
 
+const DEBUG_RENDER = process.env.DEBUG_PROFILE_METRICS === "1" || process.env.DEBUG_PROFILE_METRICS?.toLowerCase() === "true";
+
+function debugLog(message: string, details: Record<string, unknown> | null = null): void {
+  if (!DEBUG_RENDER) return;
+  if (details && Object.keys(details).length > 0) {
+    console.error(`[profile-render-debug] ${message}`, JSON.stringify(details));
+  } else {
+    console.error(`[profile-render-debug] ${message}`);
+  }
+}
+
 /** Panel fills — transparent so README / system theme shows through (avoids dark slabs in light mode). */
 enum MetricsSvgPanelColor {
   Background = "transparent",
@@ -385,11 +396,24 @@ export function statsToMetricsSvg(
     );
   }
   parts.push(`<line x1="${chartX}" y1="${chartY + chartH}" x2="${chartX + chartW}" y2="${chartY + chartH}" class="svg-chart-axis"/>`);
+  const heatCells = Math.min(53, heat.length);
   const cell = 9;
-  const hGap = 4;
+  const hGap = Math.max(0, heatCells > 1 ? (chartW - heatCells * cell) / (heatCells - 1) : 0);
   const hX = chartX;
   const hY = chartY + chartH + 24;
-  for (let i = 0; i < 53; i++) {
+  debugLog("render-metrics-layout", {
+    width,
+    height,
+    mainW,
+    chartX: chartX.toFixed(1),
+    chartW: chartW.toFixed(1),
+    chartH,
+    heatCells,
+    heatGaps: hGap.toFixed(2),
+    pointCount: points.length,
+    isFlat: heat.every((v) => v === 0),
+  });
+  for (let i = 0; i < heatCells; i++) {
     const bucket = Math.min(4, Math.max(0, heat[i] ?? 0));
     parts.push(
       `<rect x="${hX + i * (cell + hGap)}" y="${hY}" width="${cell}" height="${cell}" rx="2" class="svg-heat-${bucket}"/>`,

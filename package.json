@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "profile:dev": "bun scripts/profile-dev.ts"
+    "profile:dev": "DEBUG_PROFILE_METRICS=1 bun scripts/profile-dev.ts"
   },
   "dependencies": {},
   "devDependencies": {
