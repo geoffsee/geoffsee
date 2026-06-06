@@ -160,6 +160,23 @@ export function resolveGhLogin(spec: string | null): GhResult & { value?: string
   return { ok: true, stdout: r.stdout, value: r.stdout };
 }
 
+/** REST user fields include org accounts in `following`; GraphQL `following.totalCount` does not. */
+function userFollowCounts(login: string): { followers: number; following: number } {
+  const r = runGh(["api", `users/${login}`, "-q", "{followers: .followers, following: .following}"]);
+  if (!r.ok) {
+    throw new Error(r.stderr);
+  }
+  try {
+    const data = JSON.parse(r.stdout) as { followers: number; following: number };
+    if (!Number.isFinite(data.followers) || !Number.isFinite(data.following)) {
+      throw new Error("Invalid follow counts in REST response.");
+    }
+    return { followers: data.followers, following: data.following };
+  } catch (e) {
+    throw new Error(e instanceof Error ? e.message : "Failed to parse user follow counts.");
+  }
+}
+
 function searchTotal(login: string, q: string): number | null {
   const r = runGh(["api", `/search/${q}`, "-q", ".total_count"]);
   if (!r.ok) return null;
@@ -247,6 +264,7 @@ export function collectProfileStats(login: string): ProfileStats {
 
   const starsReceived = starsReceivedSum(login);
   const releasesCount = u.reposForReleaseCount.nodes.reduce((sum, repo) => sum + repo.releases.totalCount, 0);
+  const followCounts = userFollowCounts(login);
 
   const contrib = u.contributionsCollection.contributionCalendar.totalContributions;
   const weeklyHeatmapBuckets = coarseHeatmapBuckets(u.contributionsCollection.contributionCalendar.weeks);
@@ -271,8 +289,8 @@ export function collectProfileStats(login: string): ProfileStats {
     location: u.location,
     createdAt: u.createdAt,
     counts: {
-      followers: u.followers.totalCount,
-      following: u.following.totalCount,
+      followers: followCounts.followers,
+      following: followCounts.following,
       publicNonForkRepos: u.ownedPublicNonForkRepos.totalCount,
       starsGiven: u.starredRepositories.totalCount,
       starsReceivedOnOwnedNonForkRepos: starsReceived,
