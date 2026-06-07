@@ -110,7 +110,7 @@
 <rect x="649" y="158" width="2" height="10" rx="4" fill="#f59e0b"/>
 <circle cx="422" cy="184" r="4" fill="#4f8df7"/>
 <text x="434" y="188" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Commits</text>
-<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3053</text>
+<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3052</text>
 <circle cx="422" cy="228" r="4" fill="#22c55e"/>
 <text x="434" y="232" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Issues</text>
 <text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">376</text>
@@ -164,8 +164,8 @@
 <line x1="410" y1="598" x2="1226" y2="598" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="630" x2="1226" y2="630" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-grid" stroke-dasharray="2 8"/>
-<path d="M 410 662 L 410.0,633.5 L 425.7,633.5 L 441.4,633.5 L 457.1,633.5 L 472.8,633.5 L 488.5,633.5 L 504.2,633.5 L 519.8,633.5 L 535.5,662.0 L 551.2,633.5 L 566.9,633.5 L 582.6,662.0 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,633.5 L 770.9,633.5 L 786.6,633.5 L 802.3,633.5 L 818.0,633.5 L 833.7,633.5 L 849.4,633.5 L 865.1,662.0 L 880.8,633.5 L 896.5,605.0 L 912.2,633.5 L 927.8,605.0 L 943.5,605.0 L 959.2,605.0 L 974.9,605.0 L 990.6,605.0 L 1006.3,633.5 L 1022.0,633.5 L 1037.7,633.5 L 1053.4,633.5 L 1069.1,633.5 L 1084.8,633.5 L 1100.5,548.0 L 1116.2,605.0 L 1131.8,605.0 L 1147.5,605.0 L 1163.2,605.0 L 1178.9,605.0 L 1194.6,633.5 L 1210.3,633.5 L 1226.0,633.5 L 1226 662 Z" fill="url(#chartFill)"/>
-<polyline points="410.0,633.5 425.7,633.5 441.4,633.5 457.1,633.5 472.8,633.5 488.5,633.5 504.2,633.5 519.8,633.5 535.5,662.0 551.2,633.5 566.9,633.5 582.6,662.0 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,633.5 770.9,633.5 786.6,633.5 802.3,633.5 818.0,633.5 833.7,633.5 849.4,633.5 865.1,662.0 880.8,633.5 896.5,605.0 912.2,633.5 927.8,605.0 943.5,605.0 959.2,605.0 974.9,605.0 990.6,605.0 1006.3,633.5 1022.0,633.5 1037.7,633.5 1053.4,633.5 1069.1,633.5 1084.8,633.5 1100.5,548.0 1116.2,605.0 1131.8,605.0 1147.5,605.0 1163.2,605.0 1178.9,605.0 1194.6,633.5 1210.3,633.5 1226.0,633.5" fill="none" stroke-width="1.5" class="svg-chart-line"/>
+<path d="M 410 662 L 410.0,633.5 L 425.7,633.5 L 441.4,633.5 L 457.1,633.5 L 472.8,633.5 L 488.5,633.5 L 504.2,633.5 L 519.8,662.0 L 535.5,633.5 L 551.2,633.5 L 566.9,662.0 L 582.6,633.5 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,633.5 L 770.9,633.5 L 786.6,633.5 L 802.3,633.5 L 818.0,633.5 L 833.7,633.5 L 849.4,662.0 L 865.1,633.5 L 880.8,605.0 L 896.5,633.5 L 912.2,605.0 L 927.8,605.0 L 943.5,605.0 L 959.2,605.0 L 974.9,605.0 L 990.6,633.5 L 1006.3,633.5 L 1022.0,633.5 L 1037.7,633.5 L 1053.4,633.5 L 1069.1,633.5 L 1084.8,548.0 L 1100.5,605.0 L 1116.2,605.0 L 1131.8,605.0 L 1147.5,605.0 L 1163.2,605.0 L 1178.9,633.5 L 1194.6,633.5 L 1210.3,633.5 L 1226.0,662.0 L 1226 662 Z" fill="url(#chartFill)"/>
+<polyline points="410.0,633.5 425.7,633.5 441.4,633.5 457.1,633.5 472.8,633.5 488.5,633.5 504.2,633.5 519.8,662.0 535.5,633.5 551.2,633.5 566.9,662.0 582.6,633.5 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,633.5 770.9,633.5 786.6,633.5 802.3,633.5 818.0,633.5 833.7,633.5 849.4,662.0 865.1,633.5 880.8,605.0 896.5,633.5 912.2,605.0 927.8,605.0 943.5,605.0 959.2,605.0 974.9,605.0 990.6,633.5 1006.3,633.5 1022.0,633.5 1037.7,633.5 1053.4,633.5 1069.1,633.5 1084.8,548.0 1100.5,605.0 1116.2,605.0 1131.8,605.0 1147.5,605.0 1163.2,605.0 1178.9,633.5 1194.6,633.5 1210.3,633.5 1226.0,662.0" fill="none" stroke-width="1.5" class="svg-chart-line"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-axis"/>
 <rect x="410" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="425.5192307692308" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
@@ -174,11 +174,11 @@
 <rect x="472.0769230769231" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="487.59615384615387" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="503.11538461538464" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="518.6346153846154" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="534.1538461538462" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<rect x="518.6346153846154" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<rect x="534.1538461538462" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="549.6730769230769" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="565.1923076923077" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="580.7115384615385" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<rect x="565.1923076923077" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<rect x="580.7115384615385" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="596.2307692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="611.75" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="627.2692307692307" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
@@ -195,30 +195,30 @@
 <rect x="797.9807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="813.5" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="829.0192307692307" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="844.5384615384615" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="860.0576923076924" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
-<rect x="875.5769230769231" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="891.0961538461538" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
-<rect x="906.6153846153846" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
+<rect x="844.5384615384615" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<rect x="860.0576923076924" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
+<rect x="875.5769230769231" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
+<rect x="891.0961538461538" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
+<rect x="906.6153846153846" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="922.1346153846154" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="937.6538461538462" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="953.1730769230769" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="968.6923076923077" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
-<rect x="984.2115384615385" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
+<rect x="984.2115384615385" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="999.7307692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1015.25" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1030.769230769231" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1046.2884615384614" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1061.8076923076924" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="1077.326923076923" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="1092.8461538461538" y="686" width="9" height="9" rx="2" class="svg-heat-4"/>
+<rect x="1077.326923076923" y="686" width="9" height="9" rx="2" class="svg-heat-4"/>
+<rect x="1092.8461538461538" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1108.3653846153848" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1123.8846153846155" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1139.4038461538462" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1154.923076923077" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
-<rect x="1170.4423076923076" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
+<rect x="1170.4423076923076" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-06 16:52Z</text>
+<rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-07 00:41Z</text>
 </svg>
