@@ -8,9 +8,9 @@
       color-scheme: light dark;
       --stroke-panel: #2b3448;
       --stroke-card: #34425f;
-      --text-primary: #e6edf3;
+      --text-primary: #ffffff;
       --text-secondary: #aab6c8;
-      --text-heading: #dce4ef;
+      --text-heading: #f0f6fc;
       --text-handle: #8b949e;
       --text-strong: #ffffff;
       --text-muted-row: #cdd8e5;
@@ -141,7 +141,7 @@
 <rect x="649" y="158" width="2" height="10" rx="4" fill="#f59e0b"/>
 <circle cx="422" cy="184" r="4" fill="#4f8df7"/>
 <text x="434" y="188" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Commits</text>
-<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3096</text>
+<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3097</text>
 <circle cx="422" cy="228" r="4" fill="#22c55e"/>
 <text x="434" y="232" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Issues</text>
 <text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">376</text>
@@ -251,5 +251,5 @@
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-12 23:21Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-12 23:25Z</text>
 </svg>
