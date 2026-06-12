@@ -29,9 +29,9 @@ function metricsSvgThemeStyles(): string {
       color-scheme: light dark;
       --stroke-panel: #2b3448;
       --stroke-card: #34425f;
-      --text-primary: #e6edf3;
+      --text-primary: #ffffff;
       --text-secondary: #aab6c8;
-      --text-heading: #dce4ef;
+      --text-heading: #f0f6fc;
       --text-handle: #8b949e;
       --text-strong: #ffffff;
       --text-muted-row: #cdd8e5;
