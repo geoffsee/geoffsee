@@ -25,58 +25,89 @@ enum MetricsSvgPanelColor {
 /** SVG CSS: defaults match dark UI; light scheme uses GitHub-like foreground/border colors. */
 function metricsSvgThemeStyles(): string {
   return `<style><![CDATA[
-    .svg-stroke-panel { stroke: #2b3448; }
-    .svg-stroke-card { stroke: #34425f; }
-    .svg-text-primary { fill: #e6edf3; }
-    .svg-text-secondary { fill: #aab6c8; }
-    .svg-text-heading { fill: #dce4ef; }
-    .svg-text-handle { fill: #8b949e; }
-    .svg-text-strong { fill: #ffffff; }
-    .svg-text-muted-row { fill: #cdd8e5; }
-    .svg-avatar-fill { fill: #121a2a; }
-    .svg-avatar-stroke { stroke: #55607a; }
-    .svg-avatar-letter { fill: #e6edf3; }
-    .svg-chip-fill { fill: #18233a; }
-    .svg-chip-stroke { stroke: #2b3c5d; }
-    .svg-chip-text { fill: #cdd8e5; }
-    .svg-repo-track { fill: #1a253a; }
-    .svg-chart-grid { stroke: #2b3448; }
-    .svg-chart-axis { stroke: #93a1b7; }
-    .svg-link { fill: #58a6ff; }
-    .svg-chart-line { stroke: #7ee787; }
-    .svg-heat-0 { fill: #161b22; }
-    .svg-heat-1 { fill: #0e4429; }
-    .svg-heat-2 { fill: #006d32; }
-    .svg-heat-3 { fill: #26a641; }
-    .svg-heat-4 { fill: #39d353; }
+    :root {
+      color-scheme: light dark;
+      --stroke-panel: #2b3448;
+      --stroke-card: #34425f;
+      --text-primary: #e6edf3;
+      --text-secondary: #aab6c8;
+      --text-heading: #dce4ef;
+      --text-handle: #8b949e;
+      --text-strong: #ffffff;
+      --text-muted-row: #cdd8e5;
+      --avatar-fill: #121a2a;
+      --avatar-stroke: #55607a;
+      --avatar-letter: #e6edf3;
+      --chip-fill: #18233a;
+      --chip-stroke: #2b3c5d;
+      --chip-text: #cdd8e5;
+      --repo-track: #1a253a;
+      --chart-grid: #2b3448;
+      --chart-axis: #93a1b7;
+      --link: #58a6ff;
+      --chart-line: #7ee787;
+      --heat-0: #161b22;
+      --heat-1: #0e4429;
+      --heat-2: #006d32;
+      --heat-3: #26a641;
+      --heat-4: #39d353;
+    }
 
     @media (prefers-color-scheme: light) {
-      .svg-stroke-panel, .svg-stroke-card { stroke: #d0d7de; }
-      .svg-text-primary { fill: #1f2328; }
-      .svg-text-secondary { fill: #59636e; }
-      .svg-text-heading { fill: #1f2328; }
-      .svg-text-handle { fill: #59636e; }
-      .svg-text-strong { fill: #1f2328; }
-      .svg-text-muted-row { fill: #424a53; }
-      .svg-avatar-fill { fill: #f6f8fa; }
-      .svg-avatar-stroke { stroke: #d0d7de; }
-      .svg-avatar-letter { fill: #24292f; }
-      .svg-chip-fill { fill: #f6f8fa; }
-      .svg-chip-stroke { stroke: #d0d7de; }
-      .svg-chip-text { fill: #24292f; }
-      .svg-repo-track { fill: #eff2f5; }
-      .svg-chart-grid { stroke: #d8dee4; }
-      .svg-chart-axis { stroke: #818b98; }
-      .svg-link { fill: #0969da; }
-      .svg-chart-line { stroke: #1a7f37; }
-      .svg-heat-0 { fill: #ebedf0; }
-      .svg-heat-1 { fill: #9be9a8; }
-      .svg-heat-2 { fill: #40c463; }
-      .svg-heat-3 { fill: #30a14e; }
-      .svg-heat-4 { fill: #216e39; }
-      #chartFill stop:first-child { stop-color: #2da44e; }
-      #chartFill stop:last-child { stop-color: #2da44e; }
+      :root {
+        --stroke-panel: #d0d7de !important;
+        --stroke-card: #d0d7de !important;
+        --text-primary: #1f2328 !important;
+        --text-secondary: #59636e !important;
+        --text-heading: #1f2328 !important;
+        --text-handle: #59636e !important;
+        --text-strong: #1f2328 !important;
+        --text-muted-row: #424a53 !important;
+        --avatar-fill: #f6f8fa !important;
+        --avatar-stroke: #d0d7de !important;
+        --avatar-letter: #24292f !important;
+        --chip-fill: #f6f8fa !important;
+        --chip-stroke: #d0d7de !important;
+        --chip-text: #24292f !important;
+        --repo-track: #eff2f5 !important;
+        --chart-grid: #d8dee4 !important;
+        --chart-axis: #818b98 !important;
+        --link: #0969da !important;
+        --chart-line: #1a7f37 !important;
+        --heat-0: #ebedf0 !important;
+        --heat-1: #9be9a8 !important;
+        --heat-2: #40c463 !important;
+        --heat-3: #30a14e !important;
+        --heat-4: #216e39 !important;
+      }
+      #chartFill stop:first-child { stop-color: #2da44e !important; }
+      #chartFill stop:last-child { stop-color: #2da44e !important; }
     }
+
+    .svg-stroke-panel { stroke: var(--stroke-panel); }
+    .svg-stroke-card { stroke: var(--stroke-card); }
+    .svg-text-primary { fill: var(--text-primary); }
+    .svg-text-secondary { fill: var(--text-secondary); }
+    .svg-text-heading { fill: var(--text-heading); }
+    .svg-text-handle { fill: var(--text-handle); }
+    .svg-text-strong { fill: var(--text-strong); }
+    .svg-text-muted-row { fill: var(--text-muted-row); }
+    .svg-avatar-fill { fill: var(--avatar-fill); }
+    .svg-avatar-stroke { stroke: var(--avatar-stroke); }
+    .svg-avatar-letter { fill: var(--avatar-letter); }
+    .svg-chip-fill { fill: var(--chip-fill); }
+    .svg-chip-stroke { stroke: var(--chip-stroke); }
+    .svg-chip-text { fill: var(--chip-text); }
+    .svg-repo-track { fill: var(--repo-track); }
+    .svg-chart-grid { stroke: var(--chart-grid); }
+    .svg-chart-axis { stroke: var(--chart-axis); }
+    .svg-link { fill: var(--link); }
+    .svg-chart-line { stroke: var(--chart-line); }
+    .svg-heat-0 { fill: var(--heat-0); }
+    .svg-heat-1 { fill: var(--heat-1); }
+    .svg-heat-2 { fill: var(--heat-2); }
+    .svg-heat-3 { fill: var(--heat-3); }
+    .svg-heat-4 { fill: var(--heat-4); }
   ]]></style>`;
 }
 
