@@ -144,10 +144,10 @@
 <text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3097</text>
 <circle cx="422" cy="228" r="4" fill="#22c55e"/>
 <text x="434" y="232" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Issues</text>
-<text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">376</text>
+<text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">374</text>
 <circle cx="422" cy="272" r="4" fill="#a855f7"/>
 <text x="434" y="276" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">PRs</text>
-<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">259</text>
+<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">257</text>
 <circle cx="422" cy="316" r="4" fill="#f59e0b"/>
 <text x="434" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Reviews</text>
 <text x="651" y="320" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">35</text>
@@ -195,10 +195,10 @@
 <line x1="410" y1="598" x2="1226" y2="598" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="630" x2="1226" y2="630" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-grid" stroke-dasharray="2 8"/>
-<path d="M 410 662 L 410.0,633.5 L 425.7,633.5 L 441.4,633.5 L 457.1,633.5 L 472.8,633.5 L 488.5,633.5 L 504.2,633.5 L 519.8,662.0 L 535.5,633.5 L 551.2,633.5 L 566.9,662.0 L 582.6,633.5 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,633.5 L 770.9,633.5 L 786.6,633.5 L 802.3,633.5 L 818.0,633.5 L 833.7,633.5 L 849.4,662.0 L 865.1,633.5 L 880.8,605.0 L 896.5,633.5 L 912.2,605.0 L 927.8,605.0 L 943.5,605.0 L 959.2,605.0 L 974.9,605.0 L 990.6,633.5 L 1006.3,633.5 L 1022.0,633.5 L 1037.7,633.5 L 1053.4,633.5 L 1069.1,633.5 L 1084.8,548.0 L 1100.5,605.0 L 1116.2,605.0 L 1131.8,605.0 L 1147.5,605.0 L 1163.2,605.0 L 1178.9,633.5 L 1194.6,633.5 L 1210.3,633.5 L 1226.0,633.5 L 1226 662 Z" fill="url(#chartFill)"/>
-<polyline points="410.0,633.5 425.7,633.5 441.4,633.5 457.1,633.5 472.8,633.5 488.5,633.5 504.2,633.5 519.8,662.0 535.5,633.5 551.2,633.5 566.9,662.0 582.6,633.5 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,633.5 770.9,633.5 786.6,633.5 802.3,633.5 818.0,633.5 833.7,633.5 849.4,662.0 865.1,633.5 880.8,605.0 896.5,633.5 912.2,605.0 927.8,605.0 943.5,605.0 959.2,605.0 974.9,605.0 990.6,633.5 1006.3,633.5 1022.0,633.5 1037.7,633.5 1053.4,633.5 1069.1,633.5 1084.8,548.0 1100.5,605.0 1116.2,605.0 1131.8,605.0 1147.5,605.0 1163.2,605.0 1178.9,633.5 1194.6,633.5 1210.3,633.5 1226.0,633.5" fill="none" stroke-width="1.5" class="svg-chart-line"/>
+<path d="M 410 662 L 410.0,662.0 L 425.7,633.5 L 441.4,633.5 L 457.1,633.5 L 472.8,633.5 L 488.5,633.5 L 504.2,633.5 L 519.8,662.0 L 535.5,633.5 L 551.2,633.5 L 566.9,662.0 L 582.6,633.5 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,633.5 L 770.9,633.5 L 786.6,633.5 L 802.3,633.5 L 818.0,633.5 L 833.7,633.5 L 849.4,662.0 L 865.1,633.5 L 880.8,605.0 L 896.5,633.5 L 912.2,605.0 L 927.8,605.0 L 943.5,605.0 L 959.2,605.0 L 974.9,605.0 L 990.6,633.5 L 1006.3,633.5 L 1022.0,633.5 L 1037.7,633.5 L 1053.4,633.5 L 1069.1,633.5 L 1084.8,548.0 L 1100.5,605.0 L 1116.2,605.0 L 1131.8,605.0 L 1147.5,605.0 L 1163.2,605.0 L 1178.9,633.5 L 1194.6,633.5 L 1210.3,633.5 L 1226.0,633.5 L 1226 662 Z" fill="url(#chartFill)"/>
+<polyline points="410.0,662.0 425.7,633.5 441.4,633.5 457.1,633.5 472.8,633.5 488.5,633.5 504.2,633.5 519.8,662.0 535.5,633.5 551.2,633.5 566.9,662.0 582.6,633.5 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,633.5 770.9,633.5 786.6,633.5 802.3,633.5 818.0,633.5 833.7,633.5 849.4,662.0 865.1,633.5 880.8,605.0 896.5,633.5 912.2,605.0 927.8,605.0 943.5,605.0 959.2,605.0 974.9,605.0 990.6,633.5 1006.3,633.5 1022.0,633.5 1037.7,633.5 1053.4,633.5 1069.1,633.5 1084.8,548.0 1100.5,605.0 1116.2,605.0 1131.8,605.0 1147.5,605.0 1163.2,605.0 1178.9,633.5 1194.6,633.5 1210.3,633.5 1226.0,633.5" fill="none" stroke-width="1.5" class="svg-chart-line"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-axis"/>
-<rect x="410" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
+<rect x="410" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
 <rect x="425.5192307692308" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="441.03846153846155" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="456.5576923076923" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
@@ -251,5 +251,5 @@
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-12 23:25Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-06-13 00:44Z</text>
 </svg>
