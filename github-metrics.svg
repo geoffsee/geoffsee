@@ -102,15 +102,15 @@
 <text x="340" y="206" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">41</text>
 <text x="46" y="242" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24" font-weight="700" class="svg-text-heading">Packages</text>
 <text x="46" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">npm (~36)</text>
-<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">864/wk</text>
-<text x="46" y="294" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  ozzy-node-sdk</text>
-<text x="340" y="294" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">189</text>
-<text x="46" y="318" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @auto-agents/github-app-i…</text>
+<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">618/wk</text>
+<text x="46" y="294" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @auto-agents/github-app-i…</text>
+<text x="340" y="294" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">175</text>
+<text x="46" y="318" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @terella/github-app-insta…</text>
 <text x="340" y="318" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">173</text>
-<text x="46" y="342" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @terella/github-app-insta…</text>
-<text x="340" y="342" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">157</text>
-<text x="46" y="366" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @terella/data-plane</text>
-<text x="340" y="366" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">52</text>
+<text x="46" y="342" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @terella/data-plane</text>
+<text x="340" y="342" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">64</text>
+<text x="46" y="366" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  ozzy-node-sdk</text>
+<text x="340" y="366" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">45</text>
 <text x="46" y="396" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">crates.io (18)</text>
 <text x="340" y="396" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">11k</text>
 <text x="46" y="420" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  hyper-custom-cert</text>
@@ -141,18 +141,18 @@
 <rect x="650" y="158" width="2" height="10" rx="4" fill="#f59e0b"/>
 <circle cx="422" cy="184" r="4" fill="#4f8df7"/>
 <text x="434" y="188" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Commits</text>
-<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3882</text>
+<text x="651" y="188" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">3880</text>
 <circle cx="422" cy="228" r="4" fill="#22c55e"/>
 <text x="434" y="232" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Issues</text>
 <text x="651" y="232" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">401</text>
 <circle cx="422" cy="272" r="4" fill="#a855f7"/>
 <text x="434" y="276" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">PRs</text>
-<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">235</text>
+<text x="651" y="276" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">234</text>
 <circle cx="422" cy="316" r="4" fill="#f59e0b"/>
 <text x="434" y="320" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">Reviews</text>
 <text x="651" y="320" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">36</text>
 <text x="701" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y PRs opened</text>
-<text x="934" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">235</text>
+<text x="934" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">234</text>
 <text x="701" y="204" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y issues opened</text>
 <text x="934" y="204" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">401</text>
 <text x="701" y="238" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">~1y reviews</text>
@@ -162,7 +162,7 @@
 <text x="701" y="306" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Stars given</text>
 <text x="934" y="306" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">1374</text>
 <text x="701" y="340" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Stars on repos</text>
-<text x="934" y="340" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">1</text>
+<text x="934" y="340" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">—</text>
 <text x="984" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">1</text>
 <text x="1002" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">open-questions</text>
 <text x="1217" y="170" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">Jul 17</text>
@@ -195,8 +195,8 @@
 <line x1="410" y1="598" x2="1226" y2="598" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="630" x2="1226" y2="630" class="svg-chart-grid" stroke-dasharray="2 8"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-grid" stroke-dasharray="2 8"/>
-<path d="M 410 662 L 410.0,633.5 L 425.7,662.0 L 441.4,633.5 L 457.1,633.5 L 472.8,662.0 L 488.5,633.5 L 504.2,633.5 L 519.8,633.5 L 535.5,633.5 L 551.2,633.5 L 566.9,633.5 L 582.6,633.5 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,662.0 L 770.9,633.5 L 786.6,605.0 L 802.3,633.5 L 818.0,605.0 L 833.7,605.0 L 849.4,605.0 L 865.1,605.0 L 880.8,605.0 L 896.5,633.5 L 912.2,633.5 L 927.8,633.5 L 943.5,633.5 L 959.2,633.5 L 974.9,633.5 L 990.6,548.0 L 1006.3,605.0 L 1022.0,605.0 L 1037.7,605.0 L 1053.4,605.0 L 1069.1,605.0 L 1084.8,633.5 L 1100.5,633.5 L 1116.2,633.5 L 1131.8,633.5 L 1147.5,633.5 L 1163.2,633.5 L 1178.9,605.0 L 1194.6,576.5 L 1210.3,576.5 L 1226.0,662.0 L 1226 662 Z" fill="url(#chartFill)"/>
-<polyline points="410.0,633.5 425.7,662.0 441.4,633.5 457.1,633.5 472.8,662.0 488.5,633.5 504.2,633.5 519.8,633.5 535.5,633.5 551.2,633.5 566.9,633.5 582.6,633.5 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,662.0 770.9,633.5 786.6,605.0 802.3,633.5 818.0,605.0 833.7,605.0 849.4,605.0 865.1,605.0 880.8,605.0 896.5,633.5 912.2,633.5 927.8,633.5 943.5,633.5 959.2,633.5 974.9,633.5 990.6,548.0 1006.3,605.0 1022.0,605.0 1037.7,605.0 1053.4,605.0 1069.1,605.0 1084.8,633.5 1100.5,633.5 1116.2,633.5 1131.8,633.5 1147.5,633.5 1163.2,633.5 1178.9,605.0 1194.6,576.5 1210.3,576.5 1226.0,662.0" fill="none" stroke-width="1.5" class="svg-chart-line"/>
+<path d="M 410 662 L 410.0,633.5 L 425.7,662.0 L 441.4,633.5 L 457.1,633.5 L 472.8,662.0 L 488.5,633.5 L 504.2,633.5 L 519.8,633.5 L 535.5,633.5 L 551.2,633.5 L 566.9,633.5 L 582.6,633.5 L 598.3,633.5 L 614.0,633.5 L 629.7,633.5 L 645.4,633.5 L 661.1,633.5 L 676.8,633.5 L 692.5,633.5 L 708.2,633.5 L 723.8,633.5 L 739.5,633.5 L 755.2,662.0 L 770.9,633.5 L 786.6,605.0 L 802.3,633.5 L 818.0,605.0 L 833.7,605.0 L 849.4,605.0 L 865.1,605.0 L 880.8,605.0 L 896.5,633.5 L 912.2,633.5 L 927.8,633.5 L 943.5,633.5 L 959.2,633.5 L 974.9,633.5 L 990.6,548.0 L 1006.3,605.0 L 1022.0,605.0 L 1037.7,605.0 L 1053.4,605.0 L 1069.1,605.0 L 1084.8,633.5 L 1100.5,633.5 L 1116.2,633.5 L 1131.8,633.5 L 1147.5,633.5 L 1163.2,633.5 L 1178.9,605.0 L 1194.6,576.5 L 1210.3,576.5 L 1226.0,633.5 L 1226 662 Z" fill="url(#chartFill)"/>
+<polyline points="410.0,633.5 425.7,662.0 441.4,633.5 457.1,633.5 472.8,662.0 488.5,633.5 504.2,633.5 519.8,633.5 535.5,633.5 551.2,633.5 566.9,633.5 582.6,633.5 598.3,633.5 614.0,633.5 629.7,633.5 645.4,633.5 661.1,633.5 676.8,633.5 692.5,633.5 708.2,633.5 723.8,633.5 739.5,633.5 755.2,662.0 770.9,633.5 786.6,605.0 802.3,633.5 818.0,605.0 833.7,605.0 849.4,605.0 865.1,605.0 880.8,605.0 896.5,633.5 912.2,633.5 927.8,633.5 943.5,633.5 959.2,633.5 974.9,633.5 990.6,548.0 1006.3,605.0 1022.0,605.0 1037.7,605.0 1053.4,605.0 1069.1,605.0 1084.8,633.5 1100.5,633.5 1116.2,633.5 1131.8,633.5 1147.5,633.5 1163.2,633.5 1178.9,605.0 1194.6,576.5 1210.3,576.5 1226.0,633.5" fill="none" stroke-width="1.5" class="svg-chart-line"/>
 <line x1="410" y1="662" x2="1226" y2="662" class="svg-chart-axis"/>
 <rect x="410" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="425.5192307692308" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
@@ -250,6 +250,6 @@
 <rect x="1170.4423076923076" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-3"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-3"/>
-<rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-0"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-07-19 00:27Z</text>
+<rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-07-20 00:29Z</text>
 </svg>
