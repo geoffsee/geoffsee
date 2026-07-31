@@ -1,0 +1,3 @@
+[submodule "packages/profile-metrics-builder"]
+	path = packages/profile-metrics-builder
+	url = https://github.com/geoffsee/profile-metrics-builder.git
