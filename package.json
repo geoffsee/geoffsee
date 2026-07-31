@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "profile:dev": "DEBUG_PROFILE_METRICS=1 bun scripts/profile-dev.ts"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "playwright": "^1.60.0"
-  }
-}

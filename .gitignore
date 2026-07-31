@@ -1,6 +1,5 @@
-/.idea/
+.idea/
 .cache/
-node_modules
+node_modules/
 .*-mcp
 .claude
-
