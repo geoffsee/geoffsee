@@ -1,0 +1,74 @@
+# Private-repo metrics builder for the public profile.
+#
+# Setup
+# -----
+# 1. Create a private GitHub repo (e.g. geoffsee/profile-metrics-builder).
+# 2. Copy this file there as: .github/workflows/metrics.yml
+# 3. Add repository secrets (private repo only):
+#      METRICS_TOKEN       PAT used as GH_TOKEN for GraphQL / Search / gh api
+#                          (classic: repo + read:user, or fine-grained with
+#                          enough read on the account data you want in the SVG)
+#      PROFILE_PUSH_TOKEN  PAT or fine-grained token with contents:write on
+#                          the public profile repo only
+# 4. Optional repository variables (defaults match geoffsee):
+#      PROFILE_REPO   owner/name of the public profile (default: geoffsee/geoffsee)
+#      PROFILE_LOGIN  GitHub login for stats (default: geoffsee)
+#
+# Flow
+# ----
+# Checkout the public profile (scripts + assets/bio.md) → generate SVG/README
+# with private Actions logs → push only README.md + github-metrics.svg back.
+# Bio is edited only in the public repo (assets/bio.md); it is not overwritten.
+
+name: Metrics
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  generate-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout public profile
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ vars.PROFILE_REPO || 'geoffsee/geoffsee' }}
+          token: ${{ secrets.PROFILE_PUSH_TOKEN }}
+          # Full history so the push can update the default branch cleanly.
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Generate profile README and metrics SVG
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        run: |
+          set -euo pipefail
+          bun scripts/gh-profile-stats.ts \
+            --login "${{ vars.PROFILE_LOGIN || 'geoffsee' }}" \
+            --downloads \
+            --bio assets/bio.md
+
+      - name: Commit metrics and README to public profile
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Never stage bio or scripts — bio is authored in the public repo only.
+          git add README.md github-metrics.svg
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: update metrics and profile readme"
+            git push
+          fi
