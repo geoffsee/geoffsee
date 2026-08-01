@@ -97,7 +97,7 @@
 <text x="46" y="158" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">Followers</text>
 <text x="340" y="158" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">22</text>
 <text x="46" y="182" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">Following</text>
-<text x="340" y="182" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">43</text>
+<text x="340" y="182" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">44</text>
 <text x="46" y="206" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">Public repos</text>
 <text x="340" y="206" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">16</text>
 <text x="46" y="242" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24" font-weight="700" class="svg-text-heading">Packages</text>
@@ -128,11 +128,11 @@
 <text x="984" y="136" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="700" class="svg-text-primary">Recently Updated</text>
 <text x="404" y="88" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-text-secondary">Recent stars</text>
 <rect x="482" y="76" width="170" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>
-<text x="492" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">Miserlou/Glance-Bookm…</text>
-<rect x="660" y="76" width="142" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>
-<text x="670" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">brandly/OpenSpritz</text>
-<rect x="810" y="76" width="170" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>
-<text x="820" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">SodiumMan91/mental-he…</text>
+<text x="492" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">cloudfoundry/kind-dep…</text>
+<rect x="660" y="76" width="170" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>
+<text x="670" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">cloudfoundry/bosh-io-…</text>
+<rect x="838" y="76" width="170" height="20" rx="10" class="svg-chip-fill svg-chip-stroke"/>
+<text x="848" y="90" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" class="svg-chip-text">cloudfoundry/bosh-io-…</text>
 <rect x="418" y="158" width="201" height="10" rx="4" fill="#4f8df7"/>
 <rect x="619" y="158" width="19" height="10" rx="4" fill="#22c55e"/>
 <rect x="638" y="158" width="11" height="10" rx="4" fill="#a855f7"/>
@@ -158,7 +158,7 @@
 <text x="701" y="272" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Releases</text>
 <text x="934" y="272" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">14</text>
 <text x="701" y="306" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Stars given</text>
-<text x="934" y="306" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">1377</text>
+<text x="934" y="306" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">1386</text>
 <text x="701" y="340" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Stars on repos</text>
 <text x="934" y="340" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-primary">0</text>
 <text x="984" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-muted-row">1</text>
@@ -249,5 +249,5 @@
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-3"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-07-31 19:54Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-08-01 01:24Z</text>
 </svg>
