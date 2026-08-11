@@ -5,7 +5,6 @@
 - [muxox](https://github.com/geoffsee/muxox) - Process Orchestration
 - [aurora](https://geoffsee.github.io/aurora/) — Audio Visualization
 - [open-questions](https://geoffsee.github.io/open-questions/) — Agent Research
-- [terella-project](https://github.com/terella-project) — Agent Coordination
 
 
 > Happy hacking.
