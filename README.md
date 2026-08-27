@@ -1,4 +1,4 @@
-![Stats](/github-metrics.svg?v=id98gxu8)
+![Stats](/github-metrics.svg?v=360faqw9)
 
 [Website](https://geoff.seemueller.io) | [Status](https://status.geoffsee.com)
 
