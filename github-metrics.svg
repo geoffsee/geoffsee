@@ -102,15 +102,15 @@
 <text x="340" y="206" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">10</text>
 <text x="46" y="242" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24" font-weight="700" class="svg-text-heading">Packages</text>
 <text x="46" y="270" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">npm (~36)</text>
-<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">3.5k/wk</text>
+<text x="340" y="270" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">2.3k/wk</text>
 <text x="46" y="294" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/core</text>
-<text x="340" y="294" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">241</text>
+<text x="340" y="294" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">162</text>
 <text x="46" y="318" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/graphql</text>
-<text x="340" y="318" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">205</text>
-<text x="46" y="342" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/cli</text>
-<text x="340" y="342" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">170</text>
-<text x="46" y="366" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/componentiz…</text>
-<text x="340" y="366" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">169</text>
+<text x="340" y="318" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">147</text>
+<text x="46" y="342" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/http</text>
+<text x="340" y="342" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">127</text>
+<text x="46" y="366" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  @di-framework/config</text>
+<text x="340" y="366" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-primary">126</text>
 <text x="46" y="396" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">crates.io (3)</text>
 <text x="340" y="396" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" font-weight="700" class="svg-text-strong">6k</text>
 <text x="46" y="420" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" class="svg-text-secondary">  hyper-custom-cert</text>
@@ -249,5 +249,5 @@
 <rect x="1185.9615384615386" y="686" width="9" height="9" rx="2" class="svg-heat-2"/>
 <rect x="1201.4807692307693" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
 <rect x="1217" y="686" width="9" height="9" rx="2" class="svg-heat-1"/>
-<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-09-25 02:04Z</text>
+<text x="1228" y="740" text-anchor="end" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" class="svg-text-secondary">Updated 2026-09-26 02:09Z</text>
 </svg>
